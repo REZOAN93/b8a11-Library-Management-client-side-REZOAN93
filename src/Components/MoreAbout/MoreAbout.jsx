@@ -8,7 +8,7 @@ const MoreAbout = () => {
             <div className=''>
                 <ReactPlayer
                     width='100%'
-                    playing={true}
+                    // playing={true}
                     height='100%'
                     url='https://www.youtube.com/watch?v=tlmIrkWPA4s&t=6s' />
             </div>

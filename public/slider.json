@@ -1,109 +1,32 @@
 [
   {
-    "categoryName": "Fiction",
-    "image": "https://i.ibb.co/JFpY39T/1-2.jpg",
-    "buttonLabel": "Explore Fiction Books"
+    "name": "Alice Johnson",
+    "studentStatus": "Student",
+    "comments": "The library is my sanctuary for studying. The quiet ambiance and vast collection of books have immensely helped me with my research projects.",
+    "picture": "https://i.ibb.co/MnV0q3R/e7b1a151-1fde-4bfa-b494-43395bd61330-USP-News-Alice-Marie-Johnson.webp"
   },
   {
-    "categoryName": "Science Fiction",
-    "image": "https://i.ibb.co/DVRcZ0p/61-Zx-Xou5xx-L-AC-UF1000-1000-QL80.jpg",
-    "buttonLabel": "Discover Science Fiction Books"
+    "name": "Michael Lee",
+    "studentStatus": "Non-Student",
+    "comments": "I love bringing my kids to the library. The children's section is fantastic, with interactive learning activities and a delightful array of storybooks. It's our favorite weekend spot!",
+    "picture": "https://i.ibb.co/MkvS89R/eva-color-6cd5332b272fbc22dfb37a678dcdeb276271d48e-s1100-c50.jpg"
   },
   {
-    "categoryName": "Mystery",
-    "image": "https://i.ibb.co/hm5rN9z/Mystery-Thriller-Suspense-09928-09959-09999-1.jpg",
-    "buttonLabel": "Find Mystery Books"
+    "name": "Eva Rodriguez",
+    "studentStatus": "Student",
+    "comments": "The library staff is incredibly helpful. They guided me through various resources for my thesis, making my research process smooth and efficient.",
+    "picture": "https://i.ibb.co/Z8MYptX/fs-dbbrown.jpg"
   },
   {
-    "categoryName": "Fantasy",
-    "image": "https://i.ibb.co/GMKJv4X/download.jpg",
-    "buttonLabel": "Immerse in Fantasy Worlds"
+    "name": "David Brown",
+    "studentStatus": "Non-Student",
+    "comments": "Attending the library events has been a joy. The workshops and author talks are intellectually stimulating and have broadened my understanding of different subjects.",
+    "picture": "https://i.ibb.co/Lk3dLSg/MLEE-Headshot-Outside.jpg"
   },
   {
-    "categoryName": "Romance",
-    "image": "https://i.ibb.co/605dGNj/romcoms.webp",
-    "buttonLabel": "Explore Romantic Tales"
-  },
-  {
-    "categoryName": "Non-Fiction",
-    "image": "https://i.ibb.co/TvB8g5R/best-non-fiction-books-2023.jpg",
-    "buttonLabel": "Discover Non-Fiction Books"
-  },
-  {
-    "categoryName": "Biography",
-    "image": "https://i.ibb.co/MpB7wGn/large-4776661e463298030274c2929f3ece3313153fe3.jpg",
-    "buttonLabel": "Read Inspiring Biographies"
-  },
-  {
-    "categoryName": "History",
-    "image": "https://i.ibb.co/tByJrq6/download-1.jpg",
-    "buttonLabel": "Explore Historical Accounts"
-  },
-  {
-    "categoryName": "Self-Help",
-    "image": "https://i.ibb.co/BzPdF4f/V3-R2.webp",
-    "buttonLabel": "Improve Your Life"
-  },
-  {
-    "categoryName": "Cooking",
-    "image": "https://i.ibb.co/K677pV3/cookbook3.jpg",
-    "buttonLabel": "Cook Delicious Meals"
-  },
-  {
-    "categoryName": "Travel",
-    "image": "https://i.ibb.co/8ghFpkq/Explore-The-World-inside03-2000x.webp",
-    "buttonLabel": "Explore the World"
-  }  
+    "name": "Sophia Nguyen",
+    "studentStatus": "Student",
+    "comments": "The library's digital resources are a game-changer for my studies. Accessing e-books and online journals from home has made my research tasks incredibly convenient.",
+    "picture": "https://i.ibb.co/Np86qSk/sophia-nguyen-square-768x768.jpg"
+  }
 ]
-
-[
-{
-  "categoryName": "Poetry",
-  "image": "https://example.com/poetry.jpg",
-  "buttonLabel": "Discover Beautiful Verses"
-},
-{
-  "categoryName": "Graphic Novels",
-  "image": "https://example.com/graphic_novels.jpg",
-  "buttonLabel": "Explore Graphic Worlds"
-},
-{
-  "categoryName": "Science",
-  "image": "https://example.com/science.jpg",
-  "buttonLabel": "Dive into Science"
-},
-{
-  "categoryName": "Business",
-  "image": "https://example.com/business.jpg",
-  "buttonLabel": "Master Business Skills"
-},
-{
-  "categoryName": "Art",
-  "image": "https://example.com/art.jpg",
-  "buttonLabel": "Explore Creative Arts"
-},
-{
-  "categoryName": "Health",
-  "image": "https://example.com/health.jpg",
-  "buttonLabel": "Improve Your Health"
-},
-{
-  "categoryName": "Fantasy",
-  "image": "https://example.com/fantasy_2.jpg",
-  "buttonLabel": "Discover Magical Realms"
-},
-{
-  "categoryName": "Dystopian",
-  "image": "https://example.com/dystopian.jpg",
-  "buttonLabel": "Explore Dystopian Worlds"
-},
-{
-  "categoryName": "Classic Literature",
-  "image": "https://example.com/classic_literature.jpg",
-  "buttonLabel": "Read Classic Masterpieces"
-},
-{
-  "categoryName": "Psychology",
-  "image": "https://example.com/psychology.jpg",
-  "buttonLabel": "Explore the Mind"
-}]
