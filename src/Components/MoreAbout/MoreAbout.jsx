@@ -5,11 +5,15 @@ const MoreAbout = () => {
     return (
         <div className=' grid grid-cols-2 gap-3 my-10 max-w-7xl mx-auto'>
 
-            <div className=' border'>
-                <ReactPlayer url='https://www.youtube.com/watch?v=LXb3EKWsInQ' />
+            <div className=''>
+                <ReactPlayer
+                    width='100%'
+                    playing={true}
+                    height='100%'
+                    url='https://www.youtube.com/watch?v=tlmIrkWPA4s&t=6s' />
             </div>
-            <div className=' space-y-4 text-justify pr-20'>
-                <h1 className=' text-4xl font-bold'>For the Love of Reading</h1>
+            <div className=' text-justify space-y-3 pl-5'>
+                <h1 className=' text-4xl font-bold pb-5'>For the Love of Reading</h1>
                 <div>
                     <p className=' font-bold text-lg'>Selection</p>
                     <p>We have more than 13 million titles to choose from, from the earliest board books to the all-time classics of literature.</p>

@@ -5,6 +5,8 @@ import useAxiosSecure from "../useAxiosSecure/useAxiosSecure";
 import CategoryBook from "../CategoryBook/CategoryBook";
 import MoreAbout from "../MoreAbout/MoreAbout";
 import About from "../About/About";
+import UpcommingEvents from "../UpcommingEvents/UpcommingEvents";
+import PeopleComments from "../PeopleComments/PeopleComments";
 
 
 const Home = () => {
@@ -30,6 +32,10 @@ const Home = () => {
                 <About></About>
             </div>
             <MoreAbout></MoreAbout>
+            <div className=" pt-10 bg-slate-50">
+                <UpcommingEvents></UpcommingEvents>
+            </div>
+            <PeopleComments></PeopleComments>
         </div>
     );
 };
