@@ -1,43 +1,109 @@
 [
-    {
-      "image": "https://i.ibb.co/wwFb9yw/1-6.jpg",
-      "title": "Explore Vast Knowledge",
-      "subtitle": "Dive into a world of books covering a wide array of topics and genres.",
-      "intervalTime": 5000
-    },
-    {
-      "image": "https://i.ibb.co/wBCHGjS/1-1.jpg",
-      "title": "Immerse in Literary Treasures",
-      "subtitle": "Discover timeless classics and contemporary bestsellers in our collection.",
-      "intervalTime": 6000
-    },
-    {
-      "image": "https://i.ibb.co/dfqMsNH/1-2.jpg",
-      "title": "Connect with Book Lovers",
-      "subtitle": "Join book clubs, discussions, and events to share your passion for reading.",
-      "intervalTime": 4500
-    },
-    {
-      "image": "https://i.ibb.co/d0GzCxt/1-3.jpg",
-      "title": "Expand Your Horizons",
-      "subtitle": "Access resources that enhance learning, research, and personal growth.",
-      "intervalTime": 7000
-    },
-    {
-      "image": "https://i.ibb.co/HxrcL6W/1-4.jpg",
-      "title": "Connect with Knowledge Experts",
-      "subtitle": "Attend author talks, seminars, and workshops featuring experts in various fields of study.",
-      "intervalTime": 7000
-    },
-    {
-      "image": "https://i.ibb.co/0t9k68V/1-5.jpg",
-      "title": "Foster a Reading Culture",
-      "subtitle": "Promote literacy and lifelong learning by encouraging reading among community members.",
-      "intervalTime": 7000
-    }
-  ]
-  
+  {
+    "categoryName": "Fiction",
+    "image": "https://i.ibb.co/JFpY39T/1-2.jpg",
+    "buttonLabel": "Explore Fiction Books"
+  },
+  {
+    "categoryName": "Science Fiction",
+    "image": "https://i.ibb.co/DVRcZ0p/61-Zx-Xou5xx-L-AC-UF1000-1000-QL80.jpg",
+    "buttonLabel": "Discover Science Fiction Books"
+  },
+  {
+    "categoryName": "Mystery",
+    "image": "https://i.ibb.co/hm5rN9z/Mystery-Thriller-Suspense-09928-09959-09999-1.jpg",
+    "buttonLabel": "Find Mystery Books"
+  },
+  {
+    "categoryName": "Fantasy",
+    "image": "https://i.ibb.co/GMKJv4X/download.jpg",
+    "buttonLabel": "Immerse in Fantasy Worlds"
+  },
+  {
+    "categoryName": "Romance",
+    "image": "https://i.ibb.co/605dGNj/romcoms.webp",
+    "buttonLabel": "Explore Romantic Tales"
+  },
+  {
+    "categoryName": "Non-Fiction",
+    "image": "https://i.ibb.co/TvB8g5R/best-non-fiction-books-2023.jpg",
+    "buttonLabel": "Discover Non-Fiction Books"
+  },
+  {
+    "categoryName": "Biography",
+    "image": "https://i.ibb.co/MpB7wGn/large-4776661e463298030274c2929f3ece3313153fe3.jpg",
+    "buttonLabel": "Read Inspiring Biographies"
+  },
+  {
+    "categoryName": "History",
+    "image": "https://i.ibb.co/tByJrq6/download-1.jpg",
+    "buttonLabel": "Explore Historical Accounts"
+  },
+  {
+    "categoryName": "Self-Help",
+    "image": "https://i.ibb.co/BzPdF4f/V3-R2.webp",
+    "buttonLabel": "Improve Your Life"
+  },
+  {
+    "categoryName": "Cooking",
+    "image": "https://i.ibb.co/K677pV3/cookbook3.jpg",
+    "buttonLabel": "Cook Delicious Meals"
+  },
+  {
+    "categoryName": "Travel",
+    "image": "https://i.ibb.co/8ghFpkq/Explore-The-World-inside03-2000x.webp",
+    "buttonLabel": "Explore the World"
+  }  
+]
 
-
-
-
+[
+{
+  "categoryName": "Poetry",
+  "image": "https://example.com/poetry.jpg",
+  "buttonLabel": "Discover Beautiful Verses"
+},
+{
+  "categoryName": "Graphic Novels",
+  "image": "https://example.com/graphic_novels.jpg",
+  "buttonLabel": "Explore Graphic Worlds"
+},
+{
+  "categoryName": "Science",
+  "image": "https://example.com/science.jpg",
+  "buttonLabel": "Dive into Science"
+},
+{
+  "categoryName": "Business",
+  "image": "https://example.com/business.jpg",
+  "buttonLabel": "Master Business Skills"
+},
+{
+  "categoryName": "Art",
+  "image": "https://example.com/art.jpg",
+  "buttonLabel": "Explore Creative Arts"
+},
+{
+  "categoryName": "Health",
+  "image": "https://example.com/health.jpg",
+  "buttonLabel": "Improve Your Health"
+},
+{
+  "categoryName": "Fantasy",
+  "image": "https://example.com/fantasy_2.jpg",
+  "buttonLabel": "Discover Magical Realms"
+},
+{
+  "categoryName": "Dystopian",
+  "image": "https://example.com/dystopian.jpg",
+  "buttonLabel": "Explore Dystopian Worlds"
+},
+{
+  "categoryName": "Classic Literature",
+  "image": "https://example.com/classic_literature.jpg",
+  "buttonLabel": "Read Classic Masterpieces"
+},
+{
+  "categoryName": "Psychology",
+  "image": "https://example.com/psychology.jpg",
+  "buttonLabel": "Explore the Mind"
+}]

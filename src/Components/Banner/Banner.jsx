@@ -18,7 +18,7 @@ const Banner = () => {
             .then(res => setSlider(res.data))
     }, [axiosSecure])
 
-    console.log(slider)
+    // console.log(slider)
     return (
         <div>
             <Swiper
@@ -42,7 +42,7 @@ const Banner = () => {
                         <img className=' w-full h-[500px]' src={na.image} alt="" />
                         <div className='w-full bg-gradient-to-r from-slate-400 absolute top-0 text-center space-y-16 pt-20 h-full'>
                                 <p className=' font-bold text-white text-6xl'>{na.title}</p>
-                                <p className='w-1/2 mx-auto font-bold text-white text-xl'>{na.subtitle}</p>
+                                <p className=' w-1/2 mx-auto font-bold text-white text-xl'>{na.subtitle}</p>
                         </div>
                         </div>
                        </SwiperSlide>
