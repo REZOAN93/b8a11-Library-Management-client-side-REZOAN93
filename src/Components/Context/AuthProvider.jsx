@@ -2,6 +2,8 @@ import { createUserWithEmailAndPassword, deleteUser, getAuth, onAuthStateChanged
 import { createContext, useEffect, useState } from "react";
 import app from "../../firebase.init";
 
+
+
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {

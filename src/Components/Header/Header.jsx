@@ -1,5 +1,5 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import logo1 from "../../assets/log.png";
+import logo1 from "../../assets/header.png";
 import "./Header.css";
 import { FcBusinessman } from "react-icons/fc";
 import { useContext, useEffect, useState } from "react";
@@ -42,10 +42,13 @@ const Header = () => {
         <NavLink to={"/"}>Home</NavLink>
       </li>
       <li>
-        <NavLink to={"/addProducts"}>Add Products</NavLink>
+        <NavLink to={"/addbook"}>Add Book</NavLink>
       </li>
       <li>
-        <NavLink to={"/cart"}>My Cart</NavLink>
+        <NavLink to={"/allbooks"}>All Books</NavLink>
+      </li>
+      <li>
+        <NavLink to={"/borrowed"}> Borrowed Books</NavLink>
       </li>
       <li>
         {user ? (
@@ -96,10 +99,10 @@ const Header = () => {
             </ul>
           </div>
           <div className="flex gap-2 items-center ">
-            <img className=" hidden md:block lg:block h-10 lg:h-14" src={logo1} alt="" />
-            <a className=" text-base text-emerald-800 lg:text-3xl font-titleFont font-extrabold">
+            <img className=" md:block lg:block h-10 lg:h-14 bg-green-900 p-2 rounded-lg" src={logo1} alt="" />
+            {/* <a className=" text-base text-emerald-800 lg:text-3xl font-titleFont font-extrabold">
               REZOAN
-            </a>
+            </a> */}
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">

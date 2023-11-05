@@ -6,6 +6,9 @@ import Login from "./Components/Authentication/Login/Login";
 import Register from "./Components/Authentication/Registeration/Register";
 import Profile from "./Components/Authentication/Profile/Profile";
 import Users from "./Components/Authentication/Users";
+import AddBooks from "./Components/AddBooks/AddBooks";
+import AllBooks from "./Components/AllBooks/AllBooks";
+import Borrowed from "./Components/Borrowed/Borrowed";
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +19,22 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/addbook",
+        element: <AddBooks />,
+      },
+      {
+        path: "/allbooks",
+        element: <AllBooks />,
+      },
+      {
+        path: "/allbooks",
+        element: <AllBooks />,
+      },
+      {
+        path: "/borrowed",
+        element: <Borrowed />,
       },
       {
         path: "/login",
