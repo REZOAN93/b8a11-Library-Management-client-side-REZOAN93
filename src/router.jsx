@@ -11,6 +11,7 @@ import AllBooks from "./Components/AllBooks/AllBooks";
 import Borrowed from "./Components/Borrowed/Borrowed";
 import BooksbyCategory from "./Components/CategoryBook/BooksbyCategory";
 import BookDetails from "./Components/CategoryBook/BookDetails";
+import PrivateRoute from "./Routes/PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -29,24 +30,20 @@ export const router = createBrowserRouter([
       },
       {
         path: "/bookdetails/:id",
-        element: <BookDetails></BookDetails>,
+        element: <PrivateRoute><BookDetails></BookDetails></PrivateRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/bookdetails/${params.id}`),
       },
       {
         path: "/addbook",
-        element: <AddBooks />,
+        element: <PrivateRoute><AddBooks /></PrivateRoute>,
       },
       {
         path: "/allbooks",
-        element: <AllBooks />,
-      },
-      {
-        path: "/allbooks",
-        element: <AllBooks />,
+        element: <PrivateRoute> <AllBooks /></PrivateRoute>,
       },
       {
         path: "/borrowed",
-        element: <Borrowed />,
+        element: <PrivateRoute><Borrowed /></PrivateRoute>,
       },
       {
         path: "/login",

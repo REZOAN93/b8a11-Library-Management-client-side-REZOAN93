@@ -3,6 +3,7 @@ import { FcBusinessman } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Context/AuthProvider";
+import Header from "../../Header/Header";
 
 const Profile = () => {
     const { user, updateUser } = useContext(AuthContext);
@@ -46,7 +47,9 @@ const Profile = () => {
             });
     };
     return (
-        <div id="profileContainer" className="lg:w-10/12 mx-2 p-2 border rounded-lg lg:mx-auto grid grid-cols-1 lg:gap-2 lg:grid-cols-2 lg:my-10 lg:p-10">
+        <div>
+            <Header></Header>
+            <div id="profileContainer" className="lg:w-10/12 mx-2 p-2 border rounded-lg lg:mx-auto grid grid-cols-1 lg:gap-2 lg:grid-cols-2 lg:my-10 lg:p-10">
             <div className="w-full">
                 {user?.photoURL ? (
                     <img className=" w-96 lg:h-96 rounded-full" src={user.photoURL} alt="" />
@@ -181,6 +184,7 @@ const Profile = () => {
                     </button>
                 </form>
             </div>
+        </div>
         </div>
     );
 };

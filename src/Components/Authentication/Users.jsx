@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Context/AuthProvider";
+import Header from "../Header/Header";
 
 const Users = () => {
     const user = useLoaderData();
@@ -36,6 +37,7 @@ const Users = () => {
     };
     return (
         <div>
+            <Header></Header>
             <div className="overflow-x-auto w-11/12 mx-auto my-10">
                 <table className="table table-zebra">
                     {/* head */}

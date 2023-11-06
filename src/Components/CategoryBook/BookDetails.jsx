@@ -1,46 +1,54 @@
 import React, { useContext } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider';
 import Header from '../Header/Header';
-
-
+import useAxiosSecure from '../useAxiosSecure/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 const BookDetails = () => {
+    const axiosSecure = useAxiosSecure();
+    const navigate = useNavigate()
     const data = useLoaderData();
     const { user } = useContext(AuthContext);
-    // const emailUser = user?.email;
-    // console.log(user.email);
-    console.log(data)
+    const emailUser = user?.email;
+    const userName = user?.displayName;
+    const { _id: bookId, name, price, category, author, description, photoURL, rating, qty, details } = data;
 
-
-    const { _id, name, price, category, author, description, photoURL, rating, qty, details } = data;
-
-    const handleAddToCart = (event) => {
+    const handleSubmitBorrowedRequest = (event) => {
         event.preventDefault();
-        const userProduct = {
-            emailUser, name, price, category, author, description, photoURL, rating, qty, details
-        };
-        //   fetch(
-        //     "https://10-17-2023-b8-a10-brand-shop-server-side-rezoan-93-hljb1lf39.vercel.app/userProducts",
-        //     {
-        //       method: "POST",
-        //       headers: { "content-type": "application/json" },
-        //       body: JSON.stringify(userProduct),
-        //     }
-        //   )
-        //     .then((res) => res.json())
-        //     .then((data) => {
-        //       Swal.fire({
-        //         title: "Added to your Cart Successfully",
-        //         showClass: {
-        //           popup: "animate__animated animate__fadeInDown",
-        //         },
-        //         hideClass: {
-        //           popup: "animate__animated animate__fadeOutUp",
-        //         },
-        //       });
-        //     });
-    };
+        const form = event.target;
+        const email = form.email.value;
+        const returnDate = form.returnDate.value;
+        const UserName = form.name.value;
+        const currentQty = data.qty
+        const updateQty = currentQty - 1
+        const bookedQty = 1
+        const updateBookqty = { qty: updateQty }
+        const borrowedBook = { bookId, email, returnDate, UserName, bookedQty, name, price, category, author, description, photoURL, rating, details }
+        console.log(borrowedBook)
+
+        axiosSecure.put(`/update/${data._id}`, updateBookqty)
+            .then(res => {
+                if (res.data) {
+
+                    axiosSecure.post('/addBorrowedBook', borrowedBook)
+                        .then(res => {
+                            if (res.data) {
+                                navigate('/borrowed')
+                                Swal.fire({
+                                    position: "top-end",
+                                    icon: "success",
+                                    title: "Book is added to the Borrowed list Successfully",
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            }
+                        })
+                }
+            })
+
+    }
+
 
     const mappedRating = Math.min(Math.max(rating, 1), 10); // Ensure rating is between 1 and 10
     const visualRating = Math.ceil(mappedRating); // Map 1-10 scale to 1-5 scale
@@ -51,11 +59,14 @@ const BookDetails = () => {
                 <div className='border bg-slate-200 rounded-lg col-span-3'>
                     <div className=' grid grid-cols-3 gap-10'>
                         <div className=' p-2'>
-                            <img src={photoURL} alt="" />
+                            <img className=' w-full h-full' src={photoURL} alt="" />
                         </div>
-                        <div className=' col-span-2 space-y-5'>
+                        <div className=' col-span-2 py-3 space-y-5'>
                             <div className=' space-y-2'>
-                                <p className=' font-bold text-2xl'>{name}</p>
+                                <div className=' flex justify-between pr-10'>
+                                    <p className=' font-bold text-2xl'>{name}</p>
+                                    <p className=' font-bold text-2xl'>Available Qty: {qty}</p>
+                                </div>
                                 <p>by <span className=' font-bold'>{author}</span></p>
                                 <p>{details}</p>
                             </div>
@@ -100,19 +111,53 @@ const BookDetails = () => {
                 </div>
                 <div className='px-2'>
                     {/* <h1>Card Part</h1> */}
-                    <button onClick={() => document.getElementById('my_modal_1').showModal()} className=' bg-green-500 hover:bg-green-900 rounded-lg text-2xl font-bold text-white py-5  w-full mb-5 p-2'>Borrow</button>
+                    
+https://i.ibb.co/3vWzY9x/read.png
+                    <button
+                        onClick={() => document.getElementById('my_modal_1').showModal()}
+                        className={`rounded-lg text-2xl text-white font-bold py-5 w-full mb-5 p-2 ${qty <= 0 ? 'bg-gray-300 cursor-not-allowed' : 'bg-green-500 hover:bg-green-900'}`}
+                        disabled={qty <= 0}
+                    >
+                        Borrow
+                    </button>
                     <button className=' bg-green-500 hover:bg-green-900 rounded-lg text-2xl font-bold text-white py-5  w-full mb-5 p-2'>Read</button>
                 </div>
             </div>
             {/* Modal Data */}
             <dialog id="my_modal_1" className="modal">
                 <div className="modal-box">
-                    <h3 className="font-bold text-lg">Hello!</h3>
-                    <p className="py-4">Press ESC key or click the button below to close</p>
+                    <h3 className="font-bold text-center text-xl">Request for Borrow</h3>
+                    {/* <p className="py-4">Press ESC key or click the button below to close</p> */}
                     <div className="modal-action">
-                        <form method="dialog">
-                            {/* if there is a button in form, it will close the modal */}
-                            <button className="btn">Close</button>
+                        <form onSubmit={handleSubmitBorrowedRequest}>
+                            <div className=' grid grid-cols-2 gap-2 pb-3'>
+                                <div>
+                                    <label htmlFor="">Return Date</label>
+                                    <input className="input input-bordered bg-[#DCE8FF] w-full" type="date" name="returnDate" id="" required />
+                                </div>
+                                <div>
+                                    <label htmlFor="">Name</label>
+                                    <input name='name' className="input input-bordered w-full   bg-[#DCE8FF]" defaultValue={userName} required />
+                                </div>
+                            </div>
+                            <div className="form-control mb-5">
+                                <label className="label">
+                                    <span className="label-text">Email</span>
+                                </label>
+                                <input type="email" placeholder="email" defaultValue={emailUser} name='email' className="input bg-[#DCE8FF] input-bordered" required />
+                            </div>
+                            {/* register your input into the hook by invoking the "register" function */}
+
+                            {/* include validation with required or other standard HTML validation rules */}
+                            {/* <input className="input input-bordered bg-[#DCE8FF]" {...register("exampleRequired", { required: true })} /> */}
+                            {/* errors will return when field validation fails  */}
+                            {/* {errors.exampleRequired && <span>This field is required</span>} */}
+
+                            <div className=' flex justify-center'>
+                                {/* <input className='btn bg-emerald-300 hover:bg-emerald-500 w-full' type="submit" /> */}
+                                <button className='btn bg-emerald-300 hover:bg-emerald-500 w-full'>Submit</button>
+                            </div>
+                            {/* <button>Submit</button> */}
                         </form>
                     </div>
                 </div>
