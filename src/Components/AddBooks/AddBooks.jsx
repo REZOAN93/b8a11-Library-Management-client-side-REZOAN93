@@ -3,42 +3,31 @@ import { useState } from "react";
 import { BsArrowLeft } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import useAxiosSecure from '../useAxiosSecure/useAxiosSecure';
 
 const AddBooks = () => {
+    const axiosSecure = useAxiosSecure();
 
-    const handleAddProduct = (event) => {
+    const handleAddBook = (event) => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
         const price = form.price.value;
-        const brand = form.brand.value;
-        const type = form.type.value;
-        const rating = form.rating.value;
+        const category = form.category.value;
+        const author = form.author.value;
         const description = form.description.value;
+        const rating = form.rating.value;
         const photoURL = form.photoURL.value;
-        const singleProduct = {
-            name,
-            price,
-            brand,
-            type,
-            description,
-            photoURL,
-            rating,
-        };
-        fetch(
-            "https://10-17-2023-b8-a10-brand-shop-server-side-rezoan-93-hljb1lf39.vercel.app/addProducts",
-            {
-                method: "POST",
-                headers: { "content-type": "application/json" },
-                body: JSON.stringify(singleProduct),
-            }
-        )
-            .then((res) => res.json())
-            .then((data) => {
-                if (data.insertedId) {
+        const qty = form.qty.value;
+        const details = form.details.value;
+        const singleBook = { name, price, category, author, description, photoURL, rating, qty, details };
+        console.log(singleBook)
+        axiosSecure.post('/addbook', singleBook)
+            .then(res => {
+                if (res.data?.insertedId) {
                     form.reset();
                     Swal.fire({
-                        title: "Product is added Successfully",
+                        title: "Book is added Successfully",
                         showClass: {
                             popup: "animate__animated animate__fadeInDown",
                         },
@@ -47,13 +36,13 @@ const AddBooks = () => {
                         },
                     });
                 }
-            });
+            })
     };
 
-    const [selectedProduct, setSelectedProduct] = useState("");
-    const handleProductChange = (event) => {
-        setSelectedProduct(event.target.value);
-    };
+    // const [selectedProduct, setSelectedProduct] = useState("");
+    // const handleProductChange = (event) => {
+    //     setSelectedProduct(event.target.value);
+    // };
 
     const optionsArray = [
         { value: "Fiction", label: "Fiction" },
@@ -68,10 +57,9 @@ const AddBooks = () => {
         { value: "Cooking", label: "Cooking" },
         { value: "Travel", label: "Travel" },
     ];
-    const [selectedBrand, setSelectedBrand] = useState("");
-
-    const handleBrandChange = (event) => {
-        setSelectedBrand(event.target.value);
+    const [selectedcategory, setSelectedCategory] = useState("");
+    const handleCategoryChange = (event) => {
+        setSelectedCategory(event.target.value);
     };
 
     const [selectedRating, setSelectedRating] = useState("");
@@ -91,7 +79,7 @@ const AddBooks = () => {
                             </h1>
                         </div>
                         <div className="px-10">
-                            <form onSubmit={handleAddProduct} className=" space-y-3">
+                            <form onSubmit={handleAddBook} className=" space-y-3">
                                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 w-full">
                                     <div className="form-control">
                                         <label className="label">
@@ -125,11 +113,11 @@ const AddBooks = () => {
                                         </label>
                                         <div className="join">
                                             <select
-                                                name="brand"
-                                                id="brand"
+                                                name="category"
+                                                id="category"
                                                 className="select select-bordered w-full"
-                                                value={selectedBrand}
-                                                onChange={handleBrandChange}
+                                                value={selectedcategory}
+                                                onChange={handleCategoryChange}
                                             >
                                                 <option value="" disabled>
                                                     Select Category Name
@@ -227,14 +215,14 @@ const AddBooks = () => {
                                     </div>
                                 </div>
                                 <div className="form-control">
-                                        <label className="label">
-                                            <span className="label-text">Details Description</span>
-                                        </label>
-                                        <div className="join">
+                                    <label className="label">
+                                        <span className="label-text">Details Description</span>
+                                    </label>
+                                    <div className="join">
                                         <textarea type="text" name="details" className="textarea input input-bordered join-item w-full h-24" placeholder="Book Details Description"></textarea>
-                                            
-                                        </div>
+
                                     </div>
+                                </div>
                                 <div className="form-control">
                                     <input
                                         className=" bg-emerald-700 w-full text-white text-2xl cursor-pointer hover:bg-emerald-800 mt-5 p-2 rounded-lg font-titleFont font-bold text-bgBtn"
@@ -251,7 +239,7 @@ const AddBooks = () => {
                     >
                         {" "}
                         <span className=" font-extrabold">
-                            <BsArrowLeft />
+                            <BsArrowLeft /> 
                         </span>{" "}
                         Back to Home
                     </Link> */}
