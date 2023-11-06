@@ -9,6 +9,8 @@ import Users from "./Components/Authentication/Users";
 import AddBooks from "./Components/AddBooks/AddBooks";
 import AllBooks from "./Components/AllBooks/AllBooks";
 import Borrowed from "./Components/Borrowed/Borrowed";
+import BooksbyCategory from "./Components/CategoryBook/BooksbyCategory";
+import BookDetails from "./Components/CategoryBook/BookDetails";
 
 export const router = createBrowserRouter([
   {
@@ -19,6 +21,16 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/category/:id",
+        element: <BooksbyCategory />,
+        loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`),
+      },
+      {
+        path: "/bookdetails/:id",
+        element: <BookDetails></BookDetails>,
+        loader: ({ params }) => fetch(`http://localhost:5000/bookdetails/${params.id}`),
       },
       {
         path: "/addbook",

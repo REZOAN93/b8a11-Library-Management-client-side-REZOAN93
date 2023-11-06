@@ -46,7 +46,7 @@ const AddBooks = () => {
 
     const optionsArray = [
         { value: "Fiction", label: "Fiction" },
-        { value: "Science Fiction", label: "Science Fiction" },
+        { value: "Science-Fiction", label: "Science-Fiction" },
         { value: "Mystery", label: "Mystery" },
         { value: "Fantasy", label: "Fantasy" },
         { value: "Romance", label: "Romance" },
