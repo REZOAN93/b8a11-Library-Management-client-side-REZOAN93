@@ -19,8 +19,7 @@ const Borrowed = () => {
             })
     }, [axiosSecure, user.email])
 
-
-    const handleDeleteData = (id) => {
+    const handleDeleteData = (data) => {
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -31,14 +30,18 @@ const Borrowed = () => {
             confirmButtonText: "Yes, Return it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosSecure.delete(`/deleteBorrowed/${id}`)
+                axiosSecure.delete(`/deleteBorrowed/${data._id}`)
                     .then(res => {
                         if (res.data?.deletedCount > 0) {
-                            const remaining = thisUserData.filter((na) => na._id !== id);
+                            const remaining = thisUserData.filter((na) => na._id !== data._id);
                             setBorrowedBook(remaining);
                             setThisUserData(remaining);
-                            Swal.fire("Deleted!", "Your file has been deleted.", "success");
+                            Swal.fire("Done!", "The Book is Return Successfully.", "success");
                         }
+                        axiosSecure.put(`/returnBorrowed/${data.bookId}`)
+                            .then(res => {
+                                console.log(res.data)
+                            })
                     })
             }
         });
@@ -91,7 +94,7 @@ const Borrowed = () => {
                                     <td></td>
                                     {/* <td className="hidden md:block lg:block">{na.category}</td> */}
                                     <td className=" cursor-pointer">
-                                        <button onClick={() => handleDeleteData(na._id)} className=' btn btn-sm bg-green-500 text-white hover:bg-green-800'>Return</button>
+                                        <button onClick={() => handleDeleteData(na)} className=' btn btn-sm bg-green-500 text-white hover:bg-green-800'>Return</button>
                                     </td>
                                 </tr>
                             </>

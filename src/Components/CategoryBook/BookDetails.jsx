@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider';
 import Header from '../Header/Header';
 import useAxiosSecure from '../useAxiosSecure/useAxiosSecure';
 import Swal from 'sweetalert2';
+import { usePDF } from 'react-to-pdf';
 
 const BookDetails = () => {
     const axiosSecure = useAxiosSecure();
@@ -18,7 +19,9 @@ const BookDetails = () => {
     const { user } = useContext(AuthContext);
     const emailUser = user?.email;
     const userName = user?.displayName;
-    const { _id: bookId, name, price, category, author, description, photoURL, rating, qty, details } = data;
+    const { _id: bookId, bookLink, name, price, category, author, description, photoURL, rating, qty, details } = data;
+
+    const { toPDF, targetRef } = usePDF({ filename: { bookLink } });
 
     const handleSubmitBorrowedRequest = (event) => {
         event.preventDefault();
@@ -122,9 +125,10 @@ const BookDetails = () => {
                         onClick={() => document.getElementById('my_modal_1').showModal()}
                         className={`rounded-lg flex items-center justify-center gap-5 text-2xl text-white font-bold py-5 w-full mb-5 p-2 ${qty <= 0 ? 'bg-gray-300 cursor-not-allowed' : 'bg-green-500 hover:bg-green-900'}`}
                         disabled={qty <= 0}
-                    > <span><img className=' w-12 h-12 rounded-lg' src="https://i.ibb.co/B6mtsjS/borrow.png" alt="" /></span>Borrow
+                    > <span><img className=' w-8 h-8 rounded-lg' src="https://i.ibb.co/B6mtsjS/borrow.png" alt="" /></span>Borrow
                     </button>
-                    <button className=' flex items-center justify-center gap-5 bg-green-500 hover:bg-green-900 rounded-lg text-2xl font-bold text-white py-5  w-full mb-5 p-2'><span><img className=' w-12 h-12' src="https://i.ibb.co/3vWzY9x/read.png" alt="" /></span>Read</button>
+                    <Link onClick={() => window.open(`${bookLink}`)} className=' flex items-center justify-center gap-5 bg-green-500 hover:bg-green-900 rounded-lg text-2xl font-bold text-white py-5  w-full mb-5 p-2'><span><img className=' w-8 h-8' src="https://i.ibb.co/3vWzY9x/read.png" alt="" /></span> Read</Link>
+                    {/* <button >Read</button> */}
                 </div>
             </div>
             {/* Modal Data */}
