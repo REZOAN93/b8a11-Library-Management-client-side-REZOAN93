@@ -48,7 +48,7 @@ const Header = () => {
         <NavLink to={"/allbooks"}>All Books</NavLink>
       </li>
       <li>
-        <NavLink to={"/borrowed"}> Borrowed Books</NavLink>
+        <NavLink to={'/userBorrowedBooks'}> Borrowed Books</NavLink>
       </li>
       <li>
         {user ? (

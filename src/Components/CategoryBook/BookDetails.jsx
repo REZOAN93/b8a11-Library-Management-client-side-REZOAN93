@@ -8,6 +8,12 @@ import Swal from 'sweetalert2';
 const BookDetails = () => {
     const axiosSecure = useAxiosSecure();
     const navigate = useNavigate()
+    const dateString = new Date();
+    const year = dateString.getFullYear();
+    const month = String(dateString.getMonth() + 1).padStart(2, "0");
+    const day = String(dateString.getDate()).padStart(2, "0");
+    const formattedDate = `${year}-${month}-${day}`;
+    console.log(formattedDate)
     const data = useLoaderData();
     const { user } = useContext(AuthContext);
     const emailUser = user?.email;
@@ -21,10 +27,11 @@ const BookDetails = () => {
         const returnDate = form.returnDate.value;
         const UserName = form.name.value;
         const currentQty = data.qty
+        const OrderDate = formattedDate
         const updateQty = currentQty - 1
         const bookedQty = 1
         const updateBookqty = { qty: updateQty }
-        const borrowedBook = { bookId, email, returnDate, UserName, bookedQty, name, price, category, author, description, photoURL, rating, details }
+        const borrowedBook = { bookId, email, returnDate, OrderDate, UserName, bookedQty, name, price, category, author, description, photoURL, rating, details }
         console.log(borrowedBook)
 
         axiosSecure.put(`/update/${data._id}`, updateBookqty)
@@ -34,7 +41,7 @@ const BookDetails = () => {
                     axiosSecure.post('/addBorrowedBook', borrowedBook)
                         .then(res => {
                             if (res.data) {
-                                navigate('/borrowed')
+                                navigate('/userBorrowedBooks')
                                 Swal.fire({
                                     position: "top-end",
                                     icon: "success",
@@ -111,16 +118,13 @@ const BookDetails = () => {
                 </div>
                 <div className='px-2'>
                     {/* <h1>Card Part</h1> */}
-                    
-https://i.ibb.co/3vWzY9x/read.png
                     <button
                         onClick={() => document.getElementById('my_modal_1').showModal()}
-                        className={`rounded-lg text-2xl text-white font-bold py-5 w-full mb-5 p-2 ${qty <= 0 ? 'bg-gray-300 cursor-not-allowed' : 'bg-green-500 hover:bg-green-900'}`}
+                        className={`rounded-lg flex items-center justify-center gap-5 text-2xl text-white font-bold py-5 w-full mb-5 p-2 ${qty <= 0 ? 'bg-gray-300 cursor-not-allowed' : 'bg-green-500 hover:bg-green-900'}`}
                         disabled={qty <= 0}
-                    >
-                        Borrow
+                    > <span><img className=' w-12 h-12 rounded-lg' src="https://i.ibb.co/B6mtsjS/borrow.png" alt="" /></span>Borrow
                     </button>
-                    <button className=' bg-green-500 hover:bg-green-900 rounded-lg text-2xl font-bold text-white py-5  w-full mb-5 p-2'>Read</button>
+                    <button className=' flex items-center justify-center gap-5 bg-green-500 hover:bg-green-900 rounded-lg text-2xl font-bold text-white py-5  w-full mb-5 p-2'><span><img className=' w-12 h-12' src="https://i.ibb.co/3vWzY9x/read.png" alt="" /></span>Read</button>
                 </div>
             </div>
             {/* Modal Data */}

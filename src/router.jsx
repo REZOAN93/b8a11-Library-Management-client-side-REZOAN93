@@ -42,10 +42,10 @@ export const router = createBrowserRouter([
         element: <PrivateRoute> <AllBooks /></PrivateRoute>,
       },
       {
-        path: "/borrowed",
+        path: "/userBorrowedBooks",
         element: <PrivateRoute><Borrowed /></PrivateRoute>,
-      },
-      {
+        // loader: ({ params }) => fetch(`http://localhost:5000/userBorrowedBooks/${params.id}`)
+      }, {
         path: "/login",
         element: <Login />,
       },
