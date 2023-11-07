@@ -62,7 +62,7 @@ const Borrowed = () => {
                             <th className=" hidden md:block lg:block">Book Information</th>
                             <th>Borrowed Date</th>
                             <th>Return Date</th>
-                            <th>Price</th>
+                            {/* <th>Price</th> */}
                             <th></th>
                             <th></th>
                             {/* <th className="hidden md:block lg:block">Product Type</th> */}
@@ -89,7 +89,7 @@ const Borrowed = () => {
                                     </th>
                                     <td className=' text-base'>{na.OrderDate}</td>
                                     <td className=' text-base'>{na.returnDate}</td>
-                                    <td className=' text-base'>{na.price}</td>
+                                    {/* <td className=' text-base'>{na.price}</td> */}
                                     <td></td>
                                     <td></td>
                                     {/* <td className="hidden md:block lg:block">{na.category}</td> */}

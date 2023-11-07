@@ -13,6 +13,7 @@ import BooksbyCategory from "./Components/CategoryBook/BooksbyCategory";
 import BookDetails from "./Components/CategoryBook/BookDetails";
 import PrivateRoute from "./Routes/PrivateRoute";
 import ReadBookPage from "./Components/ReadBookPage/ReadBookPage";
+import UpdateBook from "./Components/UpdateBook/UpdateBook";
 
 export const router = createBrowserRouter([
   {
@@ -59,6 +60,11 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/UpdateBook/:id",
+        element: <UpdateBook />,
+        loader: ({ params }) => fetch(`http://localhost:5000/bookdetails/${params.id}`),
       },
       {
         path: "/profile",

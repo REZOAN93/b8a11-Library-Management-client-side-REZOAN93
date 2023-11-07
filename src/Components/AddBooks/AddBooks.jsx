@@ -7,7 +7,7 @@ import useAxiosSecure from '../useAxiosSecure/useAxiosSecure';
 
 const AddBooks = () => {
     const axiosSecure = useAxiosSecure();
-
+    
     const handleAddBook = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -16,11 +16,14 @@ const AddBooks = () => {
         const category = form.category.value;
         const author = form.author.value;
         const description = form.description.value;
-        const rating = form.rating.value;
+        const ratingstring = form.rating.value;
+        const rating=parseInt(ratingstring)
         const photoURL = form.photoURL.value;
-        const qty = form.qty.value;
+        const qtystring = form.qty.value;
+        const qty = parseInt(qtystring)
         const details = form.details.value;
-        const singleBook = { name, price, category, author, description, photoURL, rating, qty, details };
+        const bookLink = 'https://www.med.unc.edu/webguide/wp-content/uploads/sites/419/2019/07/AdobePDF.pdf'
+        const singleBook = { name, price, category, author, description, photoURL, rating, qty, details, bookLink };
         console.log(singleBook)
         axiosSecure.post('/addbook', singleBook)
             .then(res => {
