@@ -105,7 +105,7 @@ const Login = () => {
       });
   };
   return (
-    <div className=' bg-[#DCE8FF] pb-20 space-y-3'>
+    <div className=' pb-20 space-y-3'>
       <div className=' max-w-7xl mx-auto'>
       <Header></Header>
       </div>

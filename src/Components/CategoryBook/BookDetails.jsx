@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider';
 import Header from '../Header/Header';
@@ -21,9 +21,23 @@ const BookDetails = () => {
     const userName = user?.displayName;
     const { _id: bookId, bookLink, name, price, category, author, description, photoURL, rating, qty, details } = data;
 
-    const { toPDF, targetRef } = usePDF({ filename: { bookLink } });
+    const [stockQty, setQty] = useState(null);
+    const isQtyAvailable = stockQty > 0;
+
+    useEffect(() => {
+        axiosSecure.get(`/userBorrowedBooks?email=${user?.email}`)
+            .then(res => {
+                console.log(res.data)
+                const allBooks=res.data
+            const thisBook=allBooks.find(na=>na.bookId===bookId)
+            setQty(thisBook.bookedQty)
+            })
+    }, [axiosSecure, user.email,bookId])
+
+
 
     const handleSubmitBorrowedRequest = (event) => {
+       
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
@@ -40,8 +54,7 @@ const BookDetails = () => {
         axiosSecure.put(`/update/${data._id}`, updateBookqty)
             .then(res => {
                 if (res.data) {
-
-                    axiosSecure.post('/addBorrowedBook', borrowedBook)
+                    axiosSecure.post(`/addBorrowedBook/${bookId}`, borrowedBook)
                         .then(res => {
                             if (res.data) {
                                 navigate('/userBorrowedBooks')
@@ -123,8 +136,8 @@ const BookDetails = () => {
                     {/* <h1>Card Part</h1> */}
                     <button
                         onClick={() => document.getElementById('my_modal_1').showModal()}
-                        className={`rounded-lg flex items-center justify-center gap-5 text-2xl text-white font-bold py-5 w-full mb-5 p-2 ${qty <= 0 ? 'bg-gray-300 cursor-not-allowed' : 'bg-green-500 hover:bg-green-900'}`}
-                        disabled={qty <= 0}
+                        className={`rounded-lg flex items-center justify-center gap-5 text-2xl text-white font-bold py-5 w-full mb-5 p-2 ${isQtyAvailable || qty <= 0 ? 'bg-gray-300 cursor-not-allowed' : 'bg-green-500 hover:bg-green-900'}`}
+                        disabled={isQtyAvailable || qty <= 0}
                     > <span><img className=' w-8 h-8 rounded-lg' src="https://i.ibb.co/B6mtsjS/borrow.png" alt="" /></span>Borrow
                     </button>
                     <Link onClick={() => window.open(`${bookLink}`)} className=' flex items-center justify-center gap-5 bg-green-500 hover:bg-green-900 rounded-lg text-2xl font-bold text-white py-5  w-full mb-5 p-2'><span><img className=' w-8 h-8' src="https://i.ibb.co/3vWzY9x/read.png" alt="" /></span> Read</Link>

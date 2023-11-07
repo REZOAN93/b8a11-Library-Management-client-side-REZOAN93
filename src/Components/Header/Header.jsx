@@ -97,7 +97,7 @@ const Header = () => {
             >
               {navData}
             </ul>
-          </div>git
+          </div>
           <div className="flex gap-2 items-center ">
             <img className=" md:block lg:block h-10 lg:h-14 bg-green-900 p-2 rounded-lg" src={logo1} alt="" />
             {/* <a className=" text-base text-emerald-800 lg:text-3xl font-titleFont font-extrabold">
