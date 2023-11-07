@@ -23,7 +23,7 @@ const UpcommingEvents = () => {
                             <p>July 20,2024</p>
                             <p>02.30 Am</p>
                         </div>
-                        <div className=" rounded-lg py-4 px-4 bg-white flex gap-10 text-justify ">
+                        <div className=" rounded-lg py-4 px-4 bg-emerald-100 text-black flex gap-10 text-justify ">
                             <img src="https://i.ibb.co/8Y18z0g/even-1.jpg" alt="" />
                             <div className=" space-y-5">
                                 <p className=" font-bold">Tuesday Networking & Lecture</p>
@@ -38,7 +38,7 @@ const UpcommingEvents = () => {
                             <p>January 10,2024</p>
                             <p>10.30 Am</p>
                         </div>
-                        <div className=" rounded-lg py-4 px-4 bg-white flex gap-10 text-justify ">
+                        <div className=" rounded-lg py-4 px-4 bg-emerald-100 text-black flex gap-10 text-justify ">
                             <img src="https://i.ibb.co/rfwqrxk/event-2.jpg" alt="" />
                             <div className=" space-y-5">
                                 <p className=" font-bold">Interactive Discussions</p>
@@ -51,7 +51,7 @@ const UpcommingEvents = () => {
                             <p>February 14,2024</p>
                             <p>11.30 Am</p>
                         </div>
-                        <div className=" rounded-lg py-4 px-4 bg-white flex gap-10 text-justify ">
+                        <div className=" rounded-lg py-4 px-4 bg-emerald-100 text-black flex gap-10 text-justify ">
                             <img src="https://i.ibb.co/8Y18z0g/even-1.jpg" alt="" />
                             <div className=" space-y-5">
                                 <p className=" font-bold">Poetry Jam: Voices of the Soul!</p>
@@ -60,7 +60,7 @@ const UpcommingEvents = () => {
                         </div>
                     </div>
                     <div className=" flex justify-end">
-                        <button className="btn text-green-900 font-bold bg-white px-20 py-4">View More</button>
+                        <button className="btn bg-emerald-100 text-black font-bold hover:bg-emerald-800 hover:text-white px-20 py-4">View More</button>
                     </div>
                 </div>
             </div>

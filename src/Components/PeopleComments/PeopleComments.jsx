@@ -45,8 +45,8 @@ const PeopleComments = () => {
                         className="swiper"
                     >
                         {
-                            comments.map(na => <>
-                                <SwiperSlide key={na._id}>
+                            comments.map(na => <>key={na._id}
+                                <SwiperSlide>
                                     <div className=' text-center space-y-4 mt-10'>
                                         <p className=' font-bold text-white text-5xl'>{na.name}</p>
                                         <p className='mx-auto font-bold text-white text-2xl'>{na.studentStatus}</p>

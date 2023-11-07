@@ -16,7 +16,6 @@ const Home = () => {
         axiosSecure.get('/bookCategory')
             .then(res => setCategories(res.data))
     }, [axiosSecure])
-    console.log(category)
 
     return (
         <div>
@@ -32,7 +31,7 @@ const Home = () => {
                 <About></About>
             </div>
             <MoreAbout></MoreAbout>
-            <div className=" pt-10 bg-slate-50">
+            <div className=" pt-10">
                 <UpcommingEvents></UpcommingEvents>
             </div>
             <PeopleComments></PeopleComments>

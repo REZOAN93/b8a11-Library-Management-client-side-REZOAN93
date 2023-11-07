@@ -10,9 +10,10 @@ const Borrowed = () => {
     const axiosSecure = useAxiosSecure();
     const [borrowed, setBorrowedBook] = useState([])
     const [thisUserData, setThisUserData] = useState([]);
+   
 
     useEffect(() => {
-        axiosSecure.get(`/userBorrowedBooks/${user.email}`)
+        axiosSecure.get(`/userBorrowedBooks?email=${user?.email}`)
             .then(res => {
                 setBorrowedBook(res.data)
                 setThisUserData(res.data);

@@ -1,6 +1,7 @@
 import { createUserWithEmailAndPassword, deleteUser, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import app from "../../firebase.init";
+import useAxiosSecure from "../useAxiosSecure/useAxiosSecure";
 
 
 
@@ -8,16 +9,27 @@ export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
     const auth = getAuth(app);
+    const axiosSecure = useAxiosSecure();
     const [user, setUsers] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+            const userEmail = currentUser?.email || user?.email;
+            const loggedUser = { email: userEmail }
             setUsers(currentUser);
             setLoading(false);
+            if (currentUser) {
+                axiosSecure.post('/jwt', loggedUser)
+                    .then(res => console.log(res.data))
+            }
+            else {
+                axiosSecure.post('/logoutUser', loggedUser)
+                    .then(res => console.log(res.data))
+            }
         });
         return () => unSubscribe();
-    }, []);
+    }, [auth,axiosSecure,user?.email]);
 
     const createUserWithEmail = (email, password) => {
         setLoading(true);

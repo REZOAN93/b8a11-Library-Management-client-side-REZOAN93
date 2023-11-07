@@ -54,7 +54,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/readBook/:id",
-        element: <ReadBookPage />,
+        element: <PrivateRoute><ReadBookPage /></PrivateRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/bookdetails/${params.id}`),
       },
       {
@@ -63,16 +63,16 @@ export const router = createBrowserRouter([
       },
       {
         path: "/UpdateBook/:id",
-        element: <UpdateBook />,
+        element: <PrivateRoute><UpdateBook /></PrivateRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/bookdetails/${params.id}`),
       },
       {
         path: "/profile",
-        element: <Profile />,
+        element: <PrivateRoute><Profile /></PrivateRoute>,
       },
       {
         path: "/users",
-        element: <Users />,
+        element: <PrivateRoute><Users /></PrivateRoute>,
         loader: () => fetch('http://localhost:5000/users')
       },
     ],

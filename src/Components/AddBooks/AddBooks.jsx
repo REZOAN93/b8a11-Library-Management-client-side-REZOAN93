@@ -1,13 +1,15 @@
 import Header from '../Header/Header';
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { BsArrowLeft } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from '../useAxiosSecure/useAxiosSecure';
+import { AuthContext } from '../Context/AuthProvider';
 
 const AddBooks = () => {
     const axiosSecure = useAxiosSecure();
-    
+    const { user } = useContext(AuthContext);
+
     const handleAddBook = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -17,15 +19,15 @@ const AddBooks = () => {
         const author = form.author.value;
         const description = form.description.value;
         const ratingstring = form.rating.value;
-        const rating=parseInt(ratingstring)
+        const rating = parseInt(ratingstring)
         const photoURL = form.photoURL.value;
         const qtystring = form.qty.value;
         const qty = parseInt(qtystring)
         const details = form.details.value;
-        const bookLink = 'https://www.med.unc.edu/webguide/wp-content/uploads/sites/419/2019/07/AdobePDF.pdf'
+        const bookLink = form.bookLink.value;
         const singleBook = { name, price, category, author, description, photoURL, rating, qty, details, bookLink };
         console.log(singleBook)
-        axiosSecure.post('/addbook', singleBook)
+        axiosSecure.post(`/addbook?email=${user?.email}`, singleBook)
             .then(res => {
                 if (res.data?.insertedId) {
                     form.reset();
@@ -215,6 +217,20 @@ const AddBooks = () => {
                                                 placeholder="Enter the Quantity of the book"
                                             />
                                         </div>
+                                    </div>
+                                </div>
+
+                                <div className="form-control mt-3">
+                                    <label className="label">
+                                        <span className="label-text">Book URL (Pdf Link)</span>
+                                    </label>
+                                    <div className="join">
+                                        <input
+                                            name="bookLink"
+                                            className="input input-bordered join-item w-full"
+                                            type="url"
+                                            placeholder="Enter photo URL"
+                                        />
                                     </div>
                                 </div>
                                 <div className="form-control">

@@ -1,21 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Header from '../Header/Header';
 import useAxiosSecure from '../useAxiosSecure/useAxiosSecure';
 import AllBookCard from './AllBookCard';
+import { AuthContext } from '../Context/AuthProvider';
 
 const AllBooks = () => {
     const axiosSecure = useAxiosSecure();
+    const { user } = useContext(AuthContext);
     const [allBooks, setAllBooks] = useState([])
     const [filteredBooks, setFilteredBooks] = useState([]);
     const [filterActive, setFilterActive] = useState(false);
 
     useEffect(() => {
-        axiosSecure.get('/allBooks')
+        axiosSecure.get(`/allBooks?email=${user?.email}`)
             .then(res => {
                 setAllBooks(res.data)
                 setFilteredBooks(res.data);
             })
-    }, [axiosSecure])
+    }, [axiosSecure, user?.email])
 
     const handleFilterToggle = () => {
         setFilterActive(!filterActive);

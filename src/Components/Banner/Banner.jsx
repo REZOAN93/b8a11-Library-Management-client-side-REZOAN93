@@ -37,7 +37,7 @@ const Banner = () => {
             >
                 {
                     slider.map(na => <>
-                    <SwiperSlide className=' w-full h-[500px]' key={na._id}>
+                    <SwiperSlide key={na._id} className=' w-full h-[500px]' >
                         <div className=''>
                         <img className=' w-full h-[500px]' src={na.image} alt="" />
                         <div className='w-full bg-gradient-to-r from-slate-400 absolute top-0 text-center space-y-16 pt-20 h-full'>
