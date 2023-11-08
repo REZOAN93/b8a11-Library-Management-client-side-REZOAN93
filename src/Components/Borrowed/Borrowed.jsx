@@ -60,7 +60,7 @@ const Borrowed = () => {
                     {/* head */}
                     <thead>
                         <tr>
-                            <th className=" hidden md:block lg:block">Book Information</th>
+                            <th className="">Book Information</th>
                             <th>Borrowed Date</th>
                             <th>Return Date</th>
                             {/* <th>Price</th> */}
@@ -74,7 +74,7 @@ const Borrowed = () => {
                         {thisUserData.map((na) => (
                             <>
                                 <tr>
-                                    <th className="hidden md:block lg:block">
+                                    <th className="">
                                         <div className="flex items-center space-x-3">
                                             <div className="">
                                                 <div className=" w-24">

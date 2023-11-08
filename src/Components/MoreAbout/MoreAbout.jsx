@@ -3,7 +3,7 @@ import ReactPlayer from 'react-player'
 
 const MoreAbout = () => {
     return (
-        <div className=' grid grid-cols-2 gap-3 my-10 max-w-7xl mx-auto'>
+        <div className=' grid grid-cols-1 lg:grid-cols-2 gap-3 my-10 max-w-7xl mx-auto'>
 
             <div className=''>
                 <ReactPlayer
@@ -12,8 +12,8 @@ const MoreAbout = () => {
                     height='100%'
                     url='https://www.youtube.com/watch?v=tlmIrkWPA4s&t=6s' />
             </div>
-            <div className=' text-justify space-y-3 pl-5'>
-                <h1 className=' text-4xl font-bold pb-5'>For the Love of Reading</h1>
+            <div className='px-3 lg:px-0 text-justify space-y-3 lg:pl-5'>
+                <h1 className=' lg:text-4xl font-bold lg:pb-5'>For the Love of Reading</h1>
                 <div>
                     <p className=' font-bold text-lg'>Selection</p>
                     <p>We have more than 13 million titles to choose from, from the earliest board books to the all-time classics of literature.</p>

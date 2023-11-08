@@ -76,7 +76,7 @@ const UpdateBook = () => {
             </div>
             <div className=" max-w-7xl mx-auto">
                 <form onSubmit={handleUpdateBook} className=" space-y-3 pb-20">
-                    <div className=' grid grid-cols-3 gap-5'>
+                    <div className=' grid lg:grid-cols-3 gap-5'>
                         <div className='pt-8'>
                             <div className=' h-[300px] flex justify-center'>
                                 <img className=' h-[300px]' src={photoURL} alt="" />

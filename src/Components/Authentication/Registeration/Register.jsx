@@ -94,15 +94,15 @@ const Register = () => {
         };
     };
     return (
-        <div className=' pb-10'>
-            <div className=' max-w-7xl mx-auto'>
+        <div className=' pb-10 px-3 lg:px-0'>
+            <div className=' max-w-7xl mx-auto '>
                 <Header></Header>
             </div>
-            <div className="card w-1/3 bg-[#96B8FA] mx-auto ">
+            <div className="card lg:w-1/3 bg-[#96B8FA] mx-auto ">
                 <form onSubmit={handleCreateUser} className="card-body">
-                    <p className=' text-center text-white text-4xl font-bold'>Register</p>
+                    <p className=' text-center text-white text-2xl lg:text-4xl font-bold'>Register</p>
                     {/* <p className=' text-center text-white'>It's quick and easy.</p> */}
-                    <div className="form-control mt-4 grid grid-cols-2 gap-5">
+                    <div className="form-control mt-4 grid lg:grid-cols-2 gap-5">
                         <input type="text" name='firstName' placeholder="First Name" className="input text-lg py-6 input-bordered bg-[#DCE8FF]" required />
                         <input type="text" name='lastName' placeholder="Surname" className="input text-lg py-6 input-bordered bg-[#DCE8FF]" required />
                     </div>
@@ -114,7 +114,7 @@ const Register = () => {
                         <span onClick={() => setshowPassword(!showPassword)} className=" cursor-pointer absolute right-5 top-3 text-2xl">{showPassword ? <FaEyeSlash /> : <FaEye />}</span>
                     </div>
 
-                    <div className="form-control grid grid-cols-2 mt-2 gap-5">
+                    <div className="form-control grid lg:grid-cols-2 mt-2 gap-5">
                         <div className=''>
                             <label className="">
                                 <span className="label-text">Date of birth</span>
@@ -158,7 +158,7 @@ const Register = () => {
                 </form>
                 <div className=" mb-5">
 
-                    <p className=' text-center text-lg font-bold'>Already have an Account? <span className=' text-orange-500'><Link to={'/login'}>Login now</Link></span></p>
+                    <p className=' text-center lg:text-lg font-bold'>Already have an Account? <span className=' text-orange-500'><Link to={'/login'}>Login now</Link></span></p>
                 </div>
 
             </div>

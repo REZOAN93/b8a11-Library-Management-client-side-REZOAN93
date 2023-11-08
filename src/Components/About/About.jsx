@@ -33,10 +33,10 @@ const About = () => {
                     <TbSquareRotatedFilled className=" text-4xl text-green-800 w-full" />
                     <hr className="border" />
                 </p>
-                <p className="w-2/3 mt-3 mx-auto text-center text-gray-500">we are passionate about fostering a love for reading, learning, and community engagement. Established in 2021, we have been serving the local community and beyond, providing a diverse collection of books, digital resources, and educational programs.</p>
+                <p className="lg:w-2/3 px-3 lg:px-0 mt-3 mx-auto text-center text-gray-500">we are passionate about fostering a love for reading, learning, and community engagement. Established in 2021, we have been serving the local community and beyond, providing a diverse collection of books, digital resources, and educational programs.</p>
             </div>
-            <div className=" grid grid-cols-2 max-w-7xl mx-auto my-10">
-                <div className=" grid grid-cols-2 gap-4 text-justify">
+            <div className=" grid grid-cols-1 lg:px-0 lg:grid-cols-2 max-w-7xl mx-auto my-10">
+                <div className=" grid lg:grid-cols-2 px-5 lg:px-0 gap-4 text-justify">
                     <div className=" space-y-5">
                         <div className=" flex items-center gap-2 text-green-800 ">
                             <AiOutlineIdcard className=" text-3xl" />
@@ -66,7 +66,7 @@ const About = () => {
                         <p className=" text-sm text-gray-500">Stay ahead with our constantly updated catalog. We pride ourselves on offering the latest releases and up-to-date editions. Our team is committed to keeping our collection current, ensuring you have access to the most recent publications and valuable resources.</p>
                     </div>
                 </div>
-                <div className=" px-24">
+                <div className=" lg:px-24 px-16">
                     <Swiper
                         effect={'cards'}
                         grabCursor={true}
@@ -75,7 +75,7 @@ const About = () => {
                     >
                         {
                             slider.map(na => <>
-                                <SwiperSlide className=' w-full' key={na._id}>
+                                <SwiperSlide className=' w-full mt-10' key={na._id}>
                                     <div className=''>
                                         <img className=' rounded-lg' src={na.url} alt="" />
                                         <div className='w-full  absolute top-0 text-center space-y-16 pt-20 h-full'>

@@ -106,11 +106,11 @@ const Login = () => {
       });
   };
   return (
-    <div className=' pb-20 space-y-3'>
+    <div className=' pb-20 space-y-3 px-3 lg:px-0'>
       <div className=' max-w-7xl mx-auto'>
         <Header></Header>
       </div>
-      <div className="card w-[451px] bg-[#96B8FA] mx-auto ">
+      <div className="card  lg:w-[451px] bg-[#96B8FA] mx-auto ">
         <form onSubmit={handleLogInUser} className="card-body">
           <p className=' text-center text-white text-4xl mb-10 mt-5 font-bold'>Login</p>
           <div className="form-control mb-5">
@@ -133,7 +133,7 @@ const Login = () => {
         </form>
         <div className=" mb-10">
           <p className=' text-center text-lg font-bold'>Or login with</p>
-          <div className=' grid px-16 mx-auto py-2 grid-cols-2 gap-10 items-center justify-center'>
+          <div className=' px-3 grid lg:px-16 mx-auto py-2 grid-cols-2 gap-10 items-center justify-center'>
             <button onClick={handleGithubLogin} className='btn border-none hover:bg-[#1976D2] hover:text-white bg-[#DCE8FF] text-[#1976D2]'><img className='w-8 h-8' src={github} alt="" />Github</button>
             <button onClick={handleGoogleLogin} className='btn border-none hover:bg-[#1976D2] hover:text-white bg-[#DCE8FF] text-[#1976D2]'><img className='w-8 h-8' src={google} alt="" />Google</button>
             <div></div>

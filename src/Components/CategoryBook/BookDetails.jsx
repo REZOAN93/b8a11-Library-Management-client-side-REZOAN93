@@ -79,17 +79,17 @@ const BookDetails = () => {
     return (
         <div className='max-w-7xl mx-auto'>
             <Header></Header>
-            <div className=' grid grid-cols-4 py-10'>
-                <div className='border bg-slate-200 rounded-lg col-span-3'>
-                    <div className=' grid grid-cols-3 gap-10'>
+            <div className=' grid lg:grid-cols-4 py-10'>
+                <div className='border bg-slate-200 rounded-lg mb-5 lg:mb-0 lg:col-span-3'>
+                    <div className=' grid lg:grid-cols-3 gap-10'>
                         <div className=' p-2'>
                             <img className=' w-full h-full' src={photoURL} alt="" />
                         </div>
-                        <div className=' col-span-2 py-3 space-y-5'>
+                        <div className='col-span-2 px-3 lg:px-0 py-3 space-y-5'>
                             <div className=' space-y-2'>
-                                <div className=' flex justify-between pr-10'>
+                                <div className=' lg:flex justify-between lg:pr-10'>
                                     <p className=' font-bold text-2xl'>{name}</p>
-                                    <p className=' bg-white rounded-lg text-black px-2 font-bold text-xl'>Qty: {qty}</p>
+                                    <p className=' lg:bg-white rounded-lg text-black lg:px-2 font-bold text-xl'>Qty: {qty}</p>
                                 </div>
                                 <p>by <span className=' font-bold'>{author}</span></p>
                                 <p>{details}</p>
@@ -109,25 +109,25 @@ const BookDetails = () => {
                                 </div>
                             </div>
                             <div>
-                                <p className='mb-3 font-bold text-xl'>Select Format</p>
+                                <p className='mb-3 font-bold lg:text-xl'>Select Format</p>
                                 <div className=' flex gap-3'>
-                                    <div className=' bg-green-300 rounded-lg font-bold p-2 btn-outline hover:bg-green-500 cursor-pointer'><p>Hard Cover</p></div>
-                                    <div className=' bg-green-300 rounded-lg font-bold p-2 btn-outline hover:bg-green-500 cursor-pointer'><p>Paper Back</p></div>
-                                    <div className=' bg-green-300 rounded-lg font-bold p-2 btn-outline hover:bg-green-500 cursor-pointer'><p>Audio CD</p></div>
-                                    <div className=' bg-green-300 rounded-lg font-bold p-2 btn-outline hover:bg-green-500 cursor-pointer'><p>Library Binding</p></div>
+                                    <div className=' bg-green-300 rounded-lg lg:font-bold p-1 lg:p-2 lg:btn-outline hover:bg-green-500 cursor-pointer'><p>Hard Cover</p></div>
+                                    <div className=' bg-green-300 rounded-lg lg:font-bold p-1 lg:p-2 lg:btn-outline hover:bg-green-500 cursor-pointer'><p>Paper Back</p></div>
+                                    <div className=' bg-green-300 rounded-lg lg:font-bold p-1 lg:p-2 lg:btn-outline hover:bg-green-500 cursor-pointer'><p>Audio CD</p></div>
+                                    <div className=' bg-green-300 rounded-lg lg:font-bold p-1 lg:p-2 lg:btn-outline hover:bg-green-500 cursor-pointer'><p>Library Binding</p></div>
                                 </div>
                             </div>
                             <div>
-                                <p className='mb-3 font-bold text-xl'>Select Condition</p>
+                                <p className='mb-3 font-bold lg:text-xl'>Select Condition</p>
                                 <div className=' flex gap-3'>
-                                    <div className=' bg-green-300 rounded-lg font-bold p-2 btn-outline hover:bg-green-500 cursor-pointer'><p>Like New</p></div>
-                                    <div className=' bg-green-300 rounded-lg font-bold p-2 btn-outline hover:bg-green-500 cursor-pointer'><p>Very Good</p></div>
-                                    <div className=' bg-green-300 rounded-lg font-bold p-2 btn-outline hover:bg-green-500 cursor-pointer'><p>Good</p></div>
-                                    <div className=' bg-green-300 rounded-lg font-bold p-2 btn-outline hover:bg-green-500 cursor-pointer'><p>Acceptable</p></div>
-                                    <div className=' bg-green-300 rounded-lg font-bold p-2 btn-outline hover:bg-green-500 cursor-pointer'><p>New</p></div>
+                                    <div className=' bg-green-300 rounded-lg p-1 lg:font-bold lg:p-2 btn-sm lg:btn-outline hover:bg-green-500 cursor-pointer'><p>Like New</p></div>
+                                    <div className=' bg-green-300 rounded-lg p-1 lg:font-bold lg:p-2 btn-sm lg:btn-outline hover:bg-green-500 cursor-pointer'><p>Very Good</p></div>
+                                    <div className=' bg-green-300 rounded-lg p-1 lg:font-bold lg:p-2 btn-sm lg:btn-outline hover:bg-green-500 cursor-pointer'><p>Good</p></div>
+                                    <div className=' bg-green-300 rounded-lg p-1 lg:font-bold lg:p-2 btn-sm lg:btn-outline hover:bg-green-500 cursor-pointer'><p>Acceptable</p></div>
+                                    <div className=' bg-green-300 rounded-lg p-1 lg:font-bold lg:p-2 btn-sm lg:btn-outline hover:bg-green-500 cursor-pointer'><p>New</p></div>
                                 </div>
                             </div>
-                            <div className='pe-10'>
+                            <div className='lg:pe-10'>
                                 <p><span className=' font-bold'>Sumarry:</span> {description}</p>
                             </div>
                         </div>
@@ -147,12 +147,12 @@ const BookDetails = () => {
                 </div>
             </div>
             {/* Modal Data */}
-            <dialog id="my_modal_3" className="modal">
-                <div className="modal-box">
+            <dialog id="my_modal_3" className="modal pl-10 lg:pl-0">
+                <div className="modal-box border ">
                     <h3 className="font-bold text-center text-xl">Request for Borrow</h3>
                     <div className="modal-action">
                         <form onSubmit={handleSubmitBorrowedRequest} method="dialog">
-                            <div className=' grid grid-cols-2 gap-2 pb-3'>
+                            <div className=' grid lg:grid-cols-2 gap-2 pb-3'>
                                 <div>
                                     <label htmlFor="">Return Date</label>
                                     <input className="input input-bordered bg-[#DCE8FF] w-full" type="date" name="returnDate" id="" required />

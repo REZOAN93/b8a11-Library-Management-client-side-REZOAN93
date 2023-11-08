@@ -32,7 +32,7 @@ const AllBooks = () => {
     return (
         <div>
             <Header></Header>
-            <div className=' border py-2 flex justify-start'>
+            <div className=' border-b-2 border-t-2 py-2 flex justify-start'>
                 <button onClick={handleFilterToggle} className=' btn bg-green-500 text-white hover:bg-lime-700'>Filter based on available qty</button>
             </div>
             <div>

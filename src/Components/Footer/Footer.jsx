@@ -4,7 +4,7 @@ const Footer = () => {
     return (
         <div>
             <div>
-                <footer className="grid grid-cols-5 p-10 gap-5  text-white bg-black">
+                <footer className="grid lg:grid-cols-5 p-10 gap-5  text-white bg-black">
 
                     <nav className=' flex flex-col space-y-3'>
                         <header className="footer-title">Services</header>
@@ -29,7 +29,7 @@ const Footer = () => {
 
                     <form className=' col-span-2 space-y-5'>
                         <div className=" flex items-center gap-2 text-black">
-                            <img className=" h-24" src={img1} alt="" />
+                            <img className=" h-12 lg:h-24" src={img1} alt="" />
                             {/* <a className=" text-base lg:text-5xl text-emerald-800 font-titleFont font-extrabold">
                                 SARWAR
                             </a> */}
@@ -42,7 +42,7 @@ const Footer = () => {
                                 <input
                                     type="text"
                                     placeholder="*Enter Your Email*"
-                                    className="input input-bordered text-black w-full pr-16"
+                                    className="input input-bordered text-black w-full lg:pr-16"
                                 />
                                 <button className="btn btn-primary absolute top-0 right-0 rounded-l-none">
                                     Subscribe

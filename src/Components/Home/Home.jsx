@@ -22,8 +22,8 @@ const Home = () => {
             <Header></Header>
             <Banner></Banner>
             <div className="max-w-7xl mt-10 mx-auto">
-                <p className=" text-center mb-10 font-bold text-4xl">Our Category</p>
-                <div className=" grid grid-cols-4  gap-5 ">
+                <p className=" lg:text-center ps-16 underline underline-offset-4 lg:ps-0 mb-3 lg:mb-10 font-bold lg:text-4xl">Our Category</p>
+                <div className=" grid grid-cols-1 mx-16 lg:mx-0 lg:grid-cols-4  gap-5 ">
                     {category.map(na => <CategoryBook key={na._id} categories={na}></CategoryBook>)}
                 </div>
             </div>
