@@ -1,15 +1,16 @@
 import Header from '../Header/Header';
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { BsArrowLeft } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from '../useAxiosSecure/useAxiosSecure';
 // import { AuthContext } from '../Context/AuthProvider';
-import useAuth from '../Hooks/useAuth';
+
+import { AuthContext } from '../Context/AuthProvider';
 
 const AddBooks = () => {
     const axiosSecure = useAxiosSecure();
-    const { user } = useAuth();
+    const { user } = useContext(AuthContext);
 
     const handleAddBook = (event) => {
         event.preventDefault();

@@ -7,10 +7,11 @@ import Header from '../../Header/Header';
 // import { AuthContext } from '../../Context/AuthProvider';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import Swal from 'sweetalert2';
-import useAuth from '../../Hooks/useAuth';
+import { useContext } from 'react';
+import { AuthContext } from '../../Context/AuthProvider';
 
 const Login = () => {
-  const { signInWithEmail, signInWithGoogle, SignInWithGit } = useAuth();
+  const { signInWithEmail, signInWithGoogle, SignInWithGit } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   const [error, setError] = useState("");
@@ -30,7 +31,7 @@ const Login = () => {
         const userLastSign = user?.metadata?.lastSignInTime;
         const emailInfo = user?.email;
         const userInfoForDB = { emailInfo, userLastSign };
-        fetch(`http://localhost:5000/users`,
+        fetch(`https://assignment11-zeta.vercel.app/users`,
           {
             method: "PUT",
             headers: { "content-type": "application/json" },

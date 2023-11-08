@@ -29,12 +29,12 @@ export const router = createBrowserRouter([
       {
         path: "/category/:id",
         element: <BooksbyCategory />,
-        loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`),
+        loader: ({ params }) => fetch(`https://assignment11-zeta.vercel.app/category/${params.id}`),
       },
       {
         path: "/bookdetails/:id",
         element: <PrivateRoute><BookDetails></BookDetails></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/bookdetails/${params.id}`),
+        loader: ({ params }) => fetch(`https://assignment11-zeta.vercel.app/bookdetails/${params.id}`),
       },
       {
         path: "/addbook",
@@ -47,7 +47,7 @@ export const router = createBrowserRouter([
       {
         path: "/userBorrowedBooks",
         element: <PrivateRoute><Borrowed /></PrivateRoute>,
-        // loader: ({ params }) => fetch(`http://localhost:5000/userBorrowedBooks/${params.id}`)
+        // loader: ({ params }) => fetch(`https://assignment11-zeta.vercel.app/userBorrowedBooks/${params.id}`)
       },
       {
         path: "/login",
@@ -56,7 +56,7 @@ export const router = createBrowserRouter([
       {
         path: "/readBook/:id",
         element: <PrivateRoute><ReadBookPage /></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/bookdetails/${params.id}`),
+        loader: ({ params }) => fetch(`https://assignment11-zeta.vercel.app/bookdetails/${params.id}`),
       },
       {
         path: "/register",
@@ -65,7 +65,7 @@ export const router = createBrowserRouter([
       {
         path: "/UpdateBook/:id",
         element: <PrivateRoute><UpdateBook /></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/bookdetails/${params.id}`),
+        loader: ({ params }) => fetch(`https://assignment11-zeta.vercel.app/bookdetails/${params.id}`),
       },
       {
         path: "/profile",
@@ -74,7 +74,7 @@ export const router = createBrowserRouter([
       {
         path: "/users",
         element: <PrivateRoute><Users /></PrivateRoute>,
-        loader: () => fetch('http://localhost:5000/users')
+        loader: () => fetch('https://assignment11-zeta.vercel.app/users')
       },
     ],
   },

@@ -1,11 +1,9 @@
 import React from 'react';
 import { FiDollarSign, FiBookOpen } from "react-icons/fi";
 import { Link } from "react-router-dom";
-import BorrowModal from './BorrowModal';
 
 const BooksList = ({ data }) => {
     const { _id, name, price, category, author, description, photoURL, rating, qty, details } = data;
-
     const mappedRating = Math.min(Math.max(rating, 1), 10); // Ensure rating is between 1 and 10
     const visualRating = Math.ceil(mappedRating); // Map 1-10 scale to 1-5 scale
 

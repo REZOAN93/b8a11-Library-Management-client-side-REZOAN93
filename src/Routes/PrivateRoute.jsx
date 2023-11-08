@@ -1,10 +1,13 @@
+import { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import useAuth from "../Components/Hooks/useAuth";
+import { AuthContext } from "../Components/Context/AuthProvider";
+
+
 
 
 const PrivateRoute = ({ children }) => {
+    const { user, loading } = useContext(AuthContext);
     const location = useLocation();
-    const { user, loading } = useAuth();
     if (loading) {
         return (
             <div className="py-32 w-full flex justify-center">

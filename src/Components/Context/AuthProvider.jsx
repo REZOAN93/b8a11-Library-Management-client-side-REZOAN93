@@ -12,17 +12,7 @@ const AuthProvider = ({ children }) => {
     const axiosSecure = useAxiosSecure();
     const [user, setUsers] = useState(null);
     const [loading, setLoading] = useState(true);
-    // const [isAdmin,setIsAdmin]=useState(false);
-    // const checkAdminStatus = async (userEmail) => {
-    //     try {
-    //       const response = await axiosSecure.post('/isAdmin', { email: userEmail });
-    //       if(response.data){
-    //         setIsAdmin(true)
-    //       }
-    //     } catch (error) {
-    //       console.error('Error checking admin status:', error);
-    //     }
-    //   };
+
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -77,7 +67,6 @@ const AuthProvider = ({ children }) => {
 
     const authInfo = {
         user,
-        setUsers,
         createUserWithEmail,
         signInWithEmail,
         signOutUser,
@@ -85,7 +74,6 @@ const AuthProvider = ({ children }) => {
         updateUser,
         loading,
         SignInWithGit,
-        // isAdmin
     };
 
     return (

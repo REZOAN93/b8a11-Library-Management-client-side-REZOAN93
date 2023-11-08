@@ -3,12 +3,12 @@ import logo1 from "../../assets/header.png";
 import "./Header.css";
 import { FcBusinessman } from "react-icons/fc";
 import { useContext, useEffect, useState } from "react";
-import useAuth from "../Hooks/useAuth";
+import { AuthContext } from "../Context/AuthProvider";
+
+
 
 const Header = () => {
-  const { user, signOutUser } = useAuth();
-  const [loggedinUser, setLoggedInUser] = useState([])
-  const [islibrarian, setLibrarian] = useState(true)
+  const { user, signOutUser } = useContext(AuthContext);
 
   console.log(user)
   const [theme, setTheme] = useState(

@@ -4,10 +4,10 @@ import { AuthContext } from '../Context/AuthProvider';
 import { useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../useAxiosSecure/useAxiosSecure';
-import useAuth from '../Hooks/useAuth';
+
 
 const Borrowed = () => {
-    const { user } = useAuth();
+    const { user } = useContext(AuthContext);
     const axiosSecure = useAxiosSecure();
     const [borrowed, setBorrowedBook] = useState([])
     const [thisUserData, setThisUserData] = useState([]);

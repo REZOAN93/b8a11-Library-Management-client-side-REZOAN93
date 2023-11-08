@@ -2,12 +2,12 @@ import {useEffect, useState } from 'react';
 import Header from '../Header/Header';
 import useAxiosSecure from '../useAxiosSecure/useAxiosSecure';
 import AllBookCard from './AllBookCard';
-// import { AuthContext } from '../Context/AuthProvider';
-import useAuth from '../Hooks/useAuth';
+import { useContext } from 'react';
+import { AuthContext } from '../Context/AuthProvider';
 
 const AllBooks = () => {
     const axiosSecure = useAxiosSecure();
-    const { user } = useAuth();
+    const { user } = useContext(AuthContext);
     const [allBooks, setAllBooks] = useState([])
     const [filteredBooks, setFilteredBooks] = useState([]);
     const [filterActive, setFilterActive] = useState(false);

@@ -3,10 +3,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Header from '../../Header/Header';
 import Swal from 'sweetalert2';
-import useAuth from '../../Hooks/useAuth';
+import { useContext } from 'react';
+import { AuthContext } from '../../Context/AuthProvider';
 
 const Register = () => {
-    const { createUserWithEmail, updateUser, signOutUser } = useAuth();
+    const { createUserWithEmail, updateUser, signOutUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const [error, setError] = useState("");
     const [showPassword, setshowPassword] = useState(false);
@@ -23,7 +24,7 @@ const Register = () => {
         const role = 'user'
         const password = form.password.value;
         const photoURl = form.photoURL.value;
-        console.log(name, email, password, photoURl, gender, age,role)
+        console.log(name, email, password, photoURl, gender, age, role)
 
         if (password.length < 6) {
             setError("Password must be six characters long or more");
@@ -44,9 +45,9 @@ const Register = () => {
                 const user = userCredential.user;
                 const userCreationTime = user.metadata.creationTime;
                 // ...
-                const newUser = { email, name, photoURl, userCreationTime, password, gender, age,role };
+                const newUser = { email, name, photoURl, userCreationTime, password, gender, age, role };
                 fetch(
-                    "http://localhost:5000/user",
+                    "https://assignment11-zeta.vercel.app/user",
                     {
                         method: "POST",
                         headers: { "content-type": "application/json" },

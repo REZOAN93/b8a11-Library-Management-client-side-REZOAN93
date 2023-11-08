@@ -4,11 +4,11 @@ import { AuthContext } from '../Context/AuthProvider';
 import Header from '../Header/Header';
 import useAxiosSecure from '../useAxiosSecure/useAxiosSecure';
 import Swal from 'sweetalert2';
-import { usePDF } from 'react-to-pdf';
-import BorrowModal from './BorrowModal';
-import useAuth from '../Hooks/useAuth';
 
 const BookDetails = () => {
+    const data=useLoaderData()
+    const {user}=useContext(AuthContext)
+    const { _id: bookId, bookLink, name, price, category, author, description, photoURL, rating, qty, details } = data;
     const axiosSecure = useAxiosSecure();
     const navigate = useNavigate()
     const dateString = new Date();
@@ -17,11 +17,9 @@ const BookDetails = () => {
     const day = String(dateString.getDate()).padStart(2, "0");
     const formattedDate = `${year}-${month}-${day}`;
     console.log(formattedDate)
-    const data = useLoaderData();
-    const { user } = useAuth();
     const emailUser = user?.email;
     const userName = user?.displayName;
-    const { _id: bookId, bookLink, name, price, category, author, description, photoURL, rating, qty, details } = data;
+    
 
     const [stockQty, setQty] = useState(null);
     const isQtyAvailable = stockQty > 0;
