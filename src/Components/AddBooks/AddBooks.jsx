@@ -98,6 +98,7 @@ const AddBooks = () => {
                                                 name="name"
                                                 className="input input-bordered join-item w-full"
                                                 placeholder="Enter Book name"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -111,6 +112,7 @@ const AddBooks = () => {
                                                 name="price"
                                                 className="input input-bordered join-item w-full"
                                                 placeholder="Enter Book Price"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -125,6 +127,7 @@ const AddBooks = () => {
                                                 className="select select-bordered w-full"
                                                 value={selectedcategory}
                                                 onChange={handleCategoryChange}
+                                                required
                                             >
                                                 <option value="" disabled>
                                                     Select Category Name
@@ -147,6 +150,7 @@ const AddBooks = () => {
                                                 name="author"
                                                 className="input input-bordered join-item w-full"
                                                 placeholder="Enter Author Name"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -165,6 +169,7 @@ const AddBooks = () => {
                                                 name="description"
                                                 className="input input-bordered join-item w-full"
                                                 placeholder="Enter Short description"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -179,6 +184,7 @@ const AddBooks = () => {
                                                 className="select select-bordered w-full"
                                                 value={selectedRating}
                                                 onChange={handleRatingChange}
+                                                required
                                             >
                                                 <option value="" disabled>
                                                     Select Rating
@@ -204,6 +210,7 @@ const AddBooks = () => {
                                                 className="input input-bordered join-item w-full"
                                                 type="url"
                                                 placeholder="Enter photo URL"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -217,6 +224,7 @@ const AddBooks = () => {
                                                 name="qty"
                                                 className="input input-bordered join-item w-full"
                                                 placeholder="Enter the Quantity of the book"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -232,6 +240,7 @@ const AddBooks = () => {
                                             className="input input-bordered join-item w-full"
                                             type="url"
                                             placeholder="Enter photo URL"
+                                            required
                                         />
                                     </div>
                                 </div>
