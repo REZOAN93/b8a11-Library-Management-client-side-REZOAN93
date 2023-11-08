@@ -14,6 +14,7 @@ import BookDetails from "./Components/CategoryBook/BookDetails";
 import PrivateRoute from "./Routes/PrivateRoute";
 import ReadBookPage from "./Components/ReadBookPage/ReadBookPage";
 import UpdateBook from "./Components/UpdateBook/UpdateBook";
+// import PrivateRouteAdmin from "./Routes/PrivateRouteAdmin";
 
 export const router = createBrowserRouter([
   {

@@ -1,12 +1,13 @@
-import { useContext, useEffect, useState } from 'react';
+import {useEffect, useState } from 'react';
 import Header from '../Header/Header';
 import useAxiosSecure from '../useAxiosSecure/useAxiosSecure';
 import AllBookCard from './AllBookCard';
-import { AuthContext } from '../Context/AuthProvider';
+// import { AuthContext } from '../Context/AuthProvider';
+import useAuth from '../Hooks/useAuth';
 
 const AllBooks = () => {
     const axiosSecure = useAxiosSecure();
-    const { user } = useContext(AuthContext);
+    const { user } = useAuth();
     const [allBooks, setAllBooks] = useState([])
     const [filteredBooks, setFilteredBooks] = useState([]);
     const [filterActive, setFilterActive] = useState(false);
@@ -31,7 +32,7 @@ const AllBooks = () => {
     return (
         <div>
             <Header></Header>
-            <div className=' border py-2 text-center'>
+            <div className=' border py-2 flex justify-start'>
                 <button onClick={handleFilterToggle} className=' btn bg-green-500 text-white hover:bg-lime-700'>Filter based on available qty</button>
             </div>
             <div>

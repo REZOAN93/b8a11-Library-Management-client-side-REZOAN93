@@ -5,6 +5,8 @@ import Header from '../Header/Header';
 import useAxiosSecure from '../useAxiosSecure/useAxiosSecure';
 import Swal from 'sweetalert2';
 import { usePDF } from 'react-to-pdf';
+import BorrowModal from './BorrowModal';
+import useAuth from '../Hooks/useAuth';
 
 const BookDetails = () => {
     const axiosSecure = useAxiosSecure();
@@ -16,7 +18,7 @@ const BookDetails = () => {
     const formattedDate = `${year}-${month}-${day}`;
     console.log(formattedDate)
     const data = useLoaderData();
-    const { user } = useContext(AuthContext);
+    const { user } = useAuth();
     const emailUser = user?.email;
     const userName = user?.displayName;
     const { _id: bookId, bookLink, name, price, category, author, description, photoURL, rating, qty, details } = data;
@@ -28,16 +30,15 @@ const BookDetails = () => {
         axiosSecure.get(`/userBorrowedBooks?email=${user?.email}`)
             .then(res => {
                 console.log(res.data)
-                const allBooks=res.data
-            const thisBook=allBooks.find(na=>na.bookId===bookId)
-            setQty(thisBook.bookedQty)
+                const allBooks = res.data
+                const thisBook = allBooks.find(na => na.bookId === bookId)
+                setQty(thisBook.bookedQty)
             })
-    }, [axiosSecure, user.email,bookId])
+    }, [axiosSecure, user.email, bookId])
 
 
 
     const handleSubmitBorrowedRequest = (event) => {
-       
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
@@ -88,7 +89,7 @@ const BookDetails = () => {
                             <div className=' space-y-2'>
                                 <div className=' flex justify-between pr-10'>
                                     <p className=' font-bold text-2xl'>{name}</p>
-                                    <p className=' font-bold text-2xl'>Available Qty: {qty}</p>
+                                    <p className=' bg-white rounded-lg text-black px-2 font-bold text-xl'>Qty: {qty}</p>
                                 </div>
                                 <p>by <span className=' font-bold'>{author}</span></p>
                                 <p>{details}</p>
@@ -127,7 +128,7 @@ const BookDetails = () => {
                                 </div>
                             </div>
                             <div className='pe-10'>
-                                <p>{description}</p>
+                                <p><span className=' font-bold'>Sumarry:</span> {description}</p>
                             </div>
                         </div>
                     </div>
@@ -135,22 +136,22 @@ const BookDetails = () => {
                 <div className='px-2'>
                     {/* <h1>Card Part</h1> */}
                     <button
-                        onClick={() => document.getElementById('my_modal_1').showModal()}
+                        onClick={() => document.getElementById('my_modal_3').showModal()}
                         className={`rounded-lg flex items-center justify-center gap-5 text-2xl text-white font-bold py-5 w-full mb-5 p-2 ${isQtyAvailable || qty <= 0 ? 'bg-gray-300 cursor-not-allowed' : 'bg-green-500 hover:bg-green-900'}`}
                         disabled={isQtyAvailable || qty <= 0}
                     > <span><img className=' w-8 h-8 rounded-lg' src="https://i.ibb.co/B6mtsjS/borrow.png" alt="" /></span>Borrow
                     </button>
                     <Link onClick={() => window.open(`${bookLink}`)} className=' flex items-center justify-center gap-5 bg-green-500 hover:bg-green-900 rounded-lg text-2xl font-bold text-white py-5  w-full mb-5 p-2'><span><img className=' w-8 h-8' src="https://i.ibb.co/3vWzY9x/read.png" alt="" /></span> Read</Link>
                     {/* <button >Read</button> */}
+                    {/* <BorrowModal data={data} handleSubmitBorrowedRequest={handleSubmitBorrowedRequest}></BorrowModal> */}
                 </div>
             </div>
             {/* Modal Data */}
-            <dialog id="my_modal_1" className="modal">
+            <dialog id="my_modal_3" className="modal">
                 <div className="modal-box">
                     <h3 className="font-bold text-center text-xl">Request for Borrow</h3>
-                    {/* <p className="py-4">Press ESC key or click the button below to close</p> */}
                     <div className="modal-action">
-                        <form onSubmit={handleSubmitBorrowedRequest}>
+                        <form onSubmit={handleSubmitBorrowedRequest} method="dialog">
                             <div className=' grid grid-cols-2 gap-2 pb-3'>
                                 <div>
                                     <label htmlFor="">Return Date</label>
@@ -158,22 +159,16 @@ const BookDetails = () => {
                                 </div>
                                 <div>
                                     <label htmlFor="">Name</label>
-                                    <input name='name' className="input input-bordered w-full   bg-[#DCE8FF]" defaultValue={userName} required />
+                                    <input name='name' className="input input-bordered w-full   bg-[#DCE8FF]" defaultValue={userName} readOnly />
                                 </div>
+                                {/* <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button> */}
                             </div>
                             <div className="form-control mb-5">
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" placeholder="email" defaultValue={emailUser} name='email' className="input bg-[#DCE8FF] input-bordered" required />
+                                <input type="email" placeholder="email" defaultValue={emailUser} name='email' className="input bg-[#DCE8FF] input-bordered" readOnly />
                             </div>
-                            {/* register your input into the hook by invoking the "register" function */}
-
-                            {/* include validation with required or other standard HTML validation rules */}
-                            {/* <input className="input input-bordered bg-[#DCE8FF]" {...register("exampleRequired", { required: true })} /> */}
-                            {/* errors will return when field validation fails  */}
-                            {/* {errors.exampleRequired && <span>This field is required</span>} */}
-
                             <div className=' flex justify-center'>
                                 {/* <input className='btn bg-emerald-300 hover:bg-emerald-500 w-full' type="submit" /> */}
                                 <button className='btn bg-emerald-300 hover:bg-emerald-500 w-full'>Submit</button>

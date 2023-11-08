@@ -6,7 +6,6 @@ import Header from "../Header/Header";
 
 const Users = () => {
     const user = useLoaderData();
-    // const {deleteTheCurrentUser} = useContext(AuthContext)
     const [restUsers, setrestUser] = useState(user);
     const handleDeleteUser = (id) => {
         Swal.fire({

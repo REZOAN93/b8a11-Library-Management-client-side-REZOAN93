@@ -1,6 +1,7 @@
 import React from 'react';
 import { FiDollarSign, FiBookOpen } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import BorrowModal from './BorrowModal';
 
 const BooksList = ({ data }) => {
     const { _id, name, price, category, author, description, photoURL, rating, qty, details } = data;
@@ -17,6 +18,11 @@ const BooksList = ({ data }) => {
                 <h1 style={{ color: "#1C1B1B" }} className=" flex-grow text-lg  font-bold">{name}</h1>
                 <div className=" text-emerald-800">
                     <div className=' space-y-2'>
+                        
+                        <div>
+                            <h1 style={{ color: "#1C1B1B" }} className=" text-base ">Available Qty: {qty}</h1>
+
+                        </div>
                         <div>
                             <h1 style={{ color: "#1C1B1B" }} className=" text-base ">Category: {category}</h1>
 
@@ -30,6 +36,7 @@ const BooksList = ({ data }) => {
                     <p className="flex items-center gap-2"><span style={{ color: "rgba(28, 27, 27, 1)" }}><FiDollarSign></FiDollarSign></span>{" "}Price: {price}</p>
 
                 </div> */}
+             
 
                 <div className=" flex w-full gap-4">
                     <div className="rating flex items-center">

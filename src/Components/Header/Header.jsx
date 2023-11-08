@@ -3,10 +3,14 @@ import logo1 from "../../assets/header.png";
 import "./Header.css";
 import { FcBusinessman } from "react-icons/fc";
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../Context/AuthProvider";
+import useAuth from "../Hooks/useAuth";
 
 const Header = () => {
-  const { user, signOutUser } = useContext(AuthContext);
+  const { user, signOutUser } = useAuth();
+  const [loggedinUser, setLoggedInUser] = useState([])
+  const [islibrarian, setLibrarian] = useState(true)
+
+  console.log(user)
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
@@ -42,7 +46,7 @@ const Header = () => {
         <NavLink to={"/"}>Home</NavLink>
       </li>
       <li>
-        <NavLink to={"/addbook"}>Add Book</NavLink>
+        <NavLink to={'/addBook'}>Add Book</NavLink>
       </li>
       <li>
         <NavLink to={"/allbooks"}>All Books</NavLink>

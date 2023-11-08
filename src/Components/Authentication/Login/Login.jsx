@@ -1,15 +1,16 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import github from '../../../assets/github.png'
 import google from '../../../assets/google.svg'
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Header from '../../Header/Header';
-import { AuthContext } from '../../Context/AuthProvider';
+// import { AuthContext } from '../../Context/AuthProvider';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import Swal from 'sweetalert2';
+import useAuth from '../../Hooks/useAuth';
 
 const Login = () => {
-  const { signInWithEmail, signInWithGoogle, SignInWithGit } =useContext(AuthContext);
+  const { signInWithEmail, signInWithGoogle, SignInWithGit } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const [error, setError] = useState("");
@@ -107,7 +108,7 @@ const Login = () => {
   return (
     <div className=' pb-20 space-y-3'>
       <div className=' max-w-7xl mx-auto'>
-      <Header></Header>
+        <Header></Header>
       </div>
       <div className="card w-[451px] bg-[#96B8FA] mx-auto ">
         <form onSubmit={handleLogInUser} className="card-body">
@@ -116,17 +117,17 @@ const Login = () => {
             <input type="email" name='email' placeholder="Email or Username" className="input text-lg py-6 input-bordered bg-[#DCE8FF]" required />
           </div>
           <div className="form-control relative">
-            <input name='password'  type={showPassword ? "text" : "password"} placeholder="Password" className="input text-lg py-6 input-bordered bg-[#DCE8FF]" required />
+            <input name='password' type={showPassword ? "text" : "password"} placeholder="Password" className="input text-lg py-6 input-bordered bg-[#DCE8FF]" required />
             <span onClick={() => setshowPassword(!showPassword)} className=" cursor-pointer absolute right-5 top-3 text-2xl">{showPassword ? <FaEyeSlash /> : <FaEye />}</span>
           </div>
           <div className="form-control mt-6">
-          {error ? (
-            <>
-              <p className=" text-red-600 text-sm text-center mb-2">{error}</p>
-            </>
-          ) : (
-            ""
-          )}
+            {error ? (
+              <>
+                <p className=" text-red-600 text-sm text-center mb-2">{error}</p>
+              </>
+            ) : (
+              ""
+            )}
             <button className="text-white py-2 rounded-lg text-2xl hover:bg-blue-700 font-bold bg-[#0D43AA]">Login</button>
           </div>
         </form>
@@ -137,7 +138,7 @@ const Login = () => {
             <button onClick={handleGoogleLogin} className='btn border-none hover:bg-[#1976D2] hover:text-white bg-[#DCE8FF] text-[#1976D2]'><img className='w-8 h-8' src={google} alt="" />Google</button>
             <div></div>
           </div>
-          
+
           <p className=' text-center text-xl font-bold'>Not a member? <span className=' text-orange-500'><Link to={'/register'}>Register now</Link></span></p>
         </div>
 

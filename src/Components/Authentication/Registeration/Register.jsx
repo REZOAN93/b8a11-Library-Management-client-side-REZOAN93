@@ -1,12 +1,12 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Header from '../../Header/Header';
-import { AuthContext } from '../../Context/AuthProvider';
 import Swal from 'sweetalert2';
+import useAuth from '../../Hooks/useAuth';
 
 const Register = () => {
-    const { createUserWithEmail, updateUser, signOutUser } = useContext(AuthContext);
+    const { createUserWithEmail, updateUser, signOutUser } = useAuth();
     const navigate = useNavigate();
     const [error, setError] = useState("");
     const [showPassword, setshowPassword] = useState(false);
@@ -18,11 +18,12 @@ const Register = () => {
         const lastName = form.lastName.value;
         const name = firstName + ' ' + lastName;
         const email = form.email.value;
-        const gender=form.Gender.value;
-        const age=form.age.value;
+        const gender = form.Gender.value;
+        const age = form.age.value;
+        const role = 'user'
         const password = form.password.value;
         const photoURl = form.photoURL.value;
-        console.log(name, email, password, photoURl,gender,age)
+        console.log(name, email, password, photoURl, gender, age,role)
 
         if (password.length < 6) {
             setError("Password must be six characters long or more");
@@ -36,14 +37,14 @@ const Register = () => {
             setError("Password should contain at least one Capital character");
             return;
         }
-        
+
         createUserWithEmail(email, password)
             .then((userCredential) => {
                 // Signed up
                 const user = userCredential.user;
                 const userCreationTime = user.metadata.creationTime;
                 // ...
-                const newUser = { email, name, photoURl, userCreationTime, password,gender,age };
+                const newUser = { email, name, photoURl, userCreationTime, password, gender, age,role };
                 fetch(
                     "http://localhost:5000/user",
                     {
@@ -52,16 +53,16 @@ const Register = () => {
                         body: JSON.stringify(newUser),
                     }
                 )
-                .then((res) => res.json())
-                .then((data) => {
-                    Swal.fire({
-                        position: "top-center",
-                        icon: "success",
-                        title: "Account is Created & Please Log In",
-                        showConfirmButton: false,
-                        timer: 1500,
+                    .then((res) => res.json())
+                    .then((data) => {
+                        Swal.fire({
+                            position: "top-center",
+                            icon: "success",
+                            title: "Account is Created & Please Log In",
+                            showConfirmButton: false,
+                            timer: 1500,
+                        });
                     });
-                });
                 if (user) {
                     handleUpdateUser(name, photoURl);
                     navigate("/login");

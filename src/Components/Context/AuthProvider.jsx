@@ -12,6 +12,17 @@ const AuthProvider = ({ children }) => {
     const axiosSecure = useAxiosSecure();
     const [user, setUsers] = useState(null);
     const [loading, setLoading] = useState(true);
+    // const [isAdmin,setIsAdmin]=useState(false);
+    // const checkAdminStatus = async (userEmail) => {
+    //     try {
+    //       const response = await axiosSecure.post('/isAdmin', { email: userEmail });
+    //       if(response.data){
+    //         setIsAdmin(true)
+    //       }
+    //     } catch (error) {
+    //       console.error('Error checking admin status:', error);
+    //     }
+    //   };
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -20,8 +31,10 @@ const AuthProvider = ({ children }) => {
             setUsers(currentUser);
             setLoading(false);
             if (currentUser) {
+                // checkAdminStatus(userEmail);
                 axiosSecure.post('/jwt', loggedUser)
                     .then(res => console.log(res.data))
+
             }
             else {
                 axiosSecure.post('/logoutUser', loggedUser)
@@ -29,7 +42,13 @@ const AuthProvider = ({ children }) => {
             }
         });
         return () => unSubscribe();
-    }, [auth,axiosSecure,user?.email]);
+    }, [auth, axiosSecure, user?.email]);
+
+
+    const signOutUser = () => {
+        setLoading(true);
+        return signOut(auth);
+    };
 
     const createUserWithEmail = (email, password) => {
         setLoading(true);
@@ -55,26 +74,18 @@ const AuthProvider = ({ children }) => {
         return updateProfile(auth.currentUser, profile);
     };
 
-    const signOutUser = () => {
-        setLoading(true);
-        return signOut(auth);
-    };
-
-    // const deleteTheCurrentUser = (cuser) => {
-    //     setLoading(true)
-    //     return deleteUser(cuser)
-    // }
-
 
     const authInfo = {
         user,
+        setUsers,
         createUserWithEmail,
         signInWithEmail,
         signOutUser,
         signInWithGoogle,
         updateUser,
         loading,
-        SignInWithGit
+        SignInWithGit,
+        // isAdmin
     };
 
     return (

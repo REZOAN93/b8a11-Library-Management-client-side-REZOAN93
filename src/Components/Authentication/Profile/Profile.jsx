@@ -2,11 +2,11 @@ import { useContext, useRef, useState } from "react";
 import { FcBusinessman } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { AuthContext } from "../../Context/AuthProvider";
 import Header from "../../Header/Header";
+import useAuth from "../../Hooks/useAuth";
 
 const Profile = () => {
-    const { user, updateUser } = useContext(AuthContext);
+    const { user, updateUser } = useAuth();
     const navigate = useNavigate()
     const [file, setFile] = useState();
     function handleChange(e) {
