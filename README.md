@@ -2,7 +2,6 @@
 ## Click here for the Live Link: [https://assingment11-ed720.web.app](https://assingment11-ed720.web.app)
 ----------------------------------------------------------------------------------------------------
 - Technologies Used Front End: React, Vite, Tailwind CSS, Firebase Authentication
-- 
 - Back End: Node.js, Express, MongoDB.
 
 
